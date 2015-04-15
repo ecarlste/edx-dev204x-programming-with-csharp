@@ -6,13 +6,13 @@ namespace ModuleThreeAssignment
     {
         static void Main(string[] args)
         {
-            //GetStudentInfo();
-            //GetTeacherInfo();
+            GetStudentInfo();
+            GetTeacherInfo();
             GetCourseInfo();
             GetProgramInfo();
             GetDegreeInfo();
 
-            TryValidatingBirthdateOrShowExceptionMessage();
+            TryValidatingBirthdateShowExceptionMessageOnFail();
         }
 
         static void GetStudentInfo()
@@ -111,7 +111,50 @@ namespace ModuleThreeAssignment
                               Environment.NewLine, courseName, courseNumber, courseCredits);
         }
 
-        private static void TryValidatingBirthdateOrShowExceptionMessage()
+        private static void GetProgramInfo()
+        {
+            string programName = PromptUserForProgramName();
+            string programDegreesAvailable = PromptUserForProgramDegreesAvailable();
+            string programDepartmentHeadFullName = PromptUserForProgramDepartmentHeadFullName();
+
+            PrintProgramDetails(programName, programDegreesAvailable, programDepartmentHeadFullName);
+        }
+
+        private static string PromptUserForProgramName()
+        {
+            Console.Write("Enter the program name: ");
+            string programName = Console.ReadLine();
+
+            return programName;
+        }
+
+        private static string PromptUserForProgramDegreesAvailable()
+        {
+            Console.Write("Enter the degrees available in the program (i.e., B.S.,M.S.,Ph.D.): ");
+            string programDegreesAvailable = Console.ReadLine();
+
+            return programDegreesAvailable;
+        }
+
+        private static string PromptUserForProgramDepartmentHeadFullName()
+        {
+            Console.Write("Enter the department head's full name: ");
+            string departmentHeadFullName = Console.ReadLine();
+
+            return departmentHeadFullName;
+        }
+
+        private static void PrintProgramDetails(string programName, string programDegreesAvailable,
+            string programDepartmentHeadFullName)
+        {
+            Console.WriteLine("{0}Program Name: {1}" +
+                              "{0}Degrees Available: {2}" +
+                              "{0}Department Head: {3}{0}",
+                              Environment.NewLine, programName, programDegreesAvailable,
+                              programDepartmentHeadFullName);
+        }
+
+        private static void TryValidatingBirthdateShowExceptionMessageOnFail()
         {
             try
             {
@@ -130,10 +173,6 @@ namespace ModuleThreeAssignment
         }
 
         private static void GetDegreeInfo()
-        {
-        }
-
-        private static void GetProgramInfo()
         {
         }
     }
