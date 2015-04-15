@@ -17,15 +17,20 @@ namespace ModuleThreeAssignment
 
         static void GetStudentInfo()
         {
-            Console.WriteLine("Enter the student's first name: ");
-            string firstName = Console.ReadLine();
-
-            Console.WriteLine("Enter the student's last name: ");
-            string lastName = Console.ReadLine();
+            string firstName = PromptUserForStringInput("Enter the student's first name: ");
+            string lastName = PromptUserForStringInput("Enter the student's last name: ");
 
             DateTime birthdate = GetStudentBirthdateAsStringAndConvertToDateTime();
 
             PrintStudentDetails(firstName, lastName, birthdate);
+        }
+
+        private static string PromptUserForStringInput(string userPromptMessage)
+        {
+            Console.Write(userPromptMessage);
+            string userResponseToPrompt = Console.ReadLine();
+
+            return userResponseToPrompt;
         }
 
         private static DateTime GetStudentBirthdateAsStringAndConvertToDateTime()
@@ -44,12 +49,9 @@ namespace ModuleThreeAssignment
 
         private static void GetTeacherInfo()
         {
-            Console.WriteLine("Enter the teacher's first name: ");
-            string firstName = Console.ReadLine();
-
-            Console.WriteLine("Enter the teacher's last name: ");
-            string lastName = Console.ReadLine();
-
+            string firstName = PromptUserForStringInput("Enter the teacher's first name: ");
+            string lastName = PromptUserForStringInput("Enter the teacher's last name: ");
+            
             DateTime birthdate = GetTeacherBirthdateAsStringAndConvertToDateTime();
 
             PrintTeacherDetails(firstName, lastName, birthdate);
@@ -71,27 +73,11 @@ namespace ModuleThreeAssignment
 
         private static void GetCourseInfo()
         {
-            string courseName = GetCourseName();
-            string courseNumber = GetCourseNumber();
+            string courseName = PromptUserForStringInput("Enter the course name: ");
+            string courseNumber = PromptUserForStringInput("Enter the course number (i.e., DEV204x): ");
             int courseCredits = GetCourseCreditsAsStringAndConvertToInt();
 
             PrintCourseDetails(courseName, courseNumber, courseCredits);
-        }
-
-        private static string GetCourseName()
-        {
-            Console.Write("Enter the course name: ");
-            string courseName = Console.ReadLine();
-
-            return courseName;
-        }
-
-        private static string GetCourseNumber()
-        {
-            Console.Write("Enter the course number (DEV204x): ");
-            string courseName = Console.ReadLine();
-
-            return courseName;
         }
 
         private static int GetCourseCreditsAsStringAndConvertToInt()
@@ -115,35 +101,12 @@ namespace ModuleThreeAssignment
 
         private static void GetProgramInfo()
         {
-            string programName = PromptUserForProgramName();
-            string programDegreesAvailable = PromptUserForProgramDegreesAvailable();
-            string programDepartmentHeadFullName = PromptUserForProgramDepartmentHeadFullName();
+            string programName = PromptUserForStringInput("Enter the program name: ");
+            string programDegreesAvailable = PromptUserForStringInput(
+                "Enter the degrees available in the program (i.e., B.S.,M.S.,Ph.D.): ");
+            string programDepartmentHeadFullName = PromptUserForStringInput("Enter the department head's full name: ");
 
             PrintProgramDetails(programName, programDegreesAvailable, programDepartmentHeadFullName);
-        }
-
-        private static string PromptUserForProgramName()
-        {
-            Console.Write("Enter the program name: ");
-            string programName = Console.ReadLine();
-
-            return programName;
-        }
-
-        private static string PromptUserForProgramDegreesAvailable()
-        {
-            Console.Write("Enter the degrees available in the program (i.e., B.S.,M.S.,Ph.D.): ");
-            string programDegreesAvailable = Console.ReadLine();
-
-            return programDegreesAvailable;
-        }
-
-        private static string PromptUserForProgramDepartmentHeadFullName()
-        {
-            Console.Write("Enter the department head's full name: ");
-            string departmentHeadFullName = Console.ReadLine();
-
-            return departmentHeadFullName;
         }
 
         private static void PrintProgramDetails(string programName, string programDegreesAvailable,
@@ -159,21 +122,13 @@ namespace ModuleThreeAssignment
 
         private static void GetDegreeInfo()
         {
-            string degreeName = PromptUserForDegreeName();
+            string degreeName = PromptUserForStringInput("Enter degree name: ");
             int degreeTotalCreditsRequiredToComplete = PromptUserForTotalCreditsRequiredToCompleteConvertToInt32();
             int degreeUpperLevelCreditsRequiredToComplete =
                 PromptUserForUpperLevelCreditsRequiredToCompleteConvertToInt32();
 
             PrintDegreeDetails(degreeName, degreeTotalCreditsRequiredToComplete,
                 degreeUpperLevelCreditsRequiredToComplete);
-        }
-
-        private static string PromptUserForDegreeName()
-        {
-            Console.Write("Enter degree name: ");
-            string degreeName = Console.ReadLine();
-
-            return degreeName;
         }
 
         private static int PromptUserForTotalCreditsRequiredToCompleteConvertToInt32()
