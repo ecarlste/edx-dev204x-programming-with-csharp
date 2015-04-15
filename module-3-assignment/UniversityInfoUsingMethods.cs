@@ -69,6 +69,48 @@ namespace ModuleThreeAssignment
                 Environment.NewLine, firstName, lastName, birthdate);
         }
 
+        private static void GetCourseInfo()
+        {
+            string courseName = GetCourseName();
+            string courseNumber = GetCourseNumber();
+            int courseCredits = GetCourseCreditsAsStringAndConvertToInt();
+
+            PrintCourseDetails(courseName, courseNumber, courseCredits);
+        }
+
+        private static string GetCourseName()
+        {
+            Console.Write("Enter the course name: ");
+            string courseName = Console.ReadLine();
+
+            return courseName;
+        }
+
+        private static string GetCourseNumber()
+        {
+            Console.Write("Enter the course number (DEV204x): ");
+            string courseName = Console.ReadLine();
+
+            return courseName;
+        }
+
+        private static int GetCourseCreditsAsStringAndConvertToInt()
+        {
+            Console.Write("Enter the number of credits for the course: ");
+            string courseCreditsAsString = Console.ReadLine();
+            int courseNumber = Int32.Parse(courseCreditsAsString);
+
+            return courseNumber;
+        }
+
+        private static void PrintCourseDetails(string courseName, string courseNumber, int courseCredits)
+        {
+            Console.WriteLine("{0}Course Name: {1}" + 
+                              "{0}Course Number: {2}" + 
+                              "{0}Course Credit Hours: {3}{0}",
+                              Environment.NewLine, courseName, courseNumber, courseCredits);
+        }
+
         private static void TryValidatingBirthdateOrShowExceptionMessage()
         {
             try
@@ -93,37 +135,6 @@ namespace ModuleThreeAssignment
 
         private static void GetProgramInfo()
         {
-        }
-
-        private static void GetCourseInfo()
-        {
-            string courseName = GetCourseName();
-
-            string courseNumber = GetCourseNumber();
-
-            int courseCredits = GetCourseCreditsAsStringAndConvertToInt();
-
-            PrintCourseDetails(courseName, courseNumber, courseCredits);
-        }
-
-        private static string GetCourseName()
-        {
-            throw new NotImplementedException();
-        }
-
-        private static string GetCourseNumber()
-        {
-            throw new NotImplementedException();
-        }
-
-        private static int GetCourseCreditsAsStringAndConvertToInt()
-        {
-            throw new NotImplementedException();
-        }
-
-        private static void PrintCourseDetails(string courseName, string courseNumber, int courseCredits)
-        {
-            throw new NotImplementedException();
         }
     }
 }
