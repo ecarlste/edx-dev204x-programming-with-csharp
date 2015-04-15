@@ -19,8 +19,7 @@ namespace ModuleThreeAssignment
         {
             string firstName = PromptUserForStringInput("Enter the student's first name: ");
             string lastName = PromptUserForStringInput("Enter the student's last name: ");
-
-            DateTime birthdate = GetStudentBirthdateAsStringAndConvertToDateTime();
+            DateTime birthdate = PromptUserForDateTimeInput("Enter the student's birthdate (MM/DD/YYYY): ");
 
             PrintStudentDetails(firstName, lastName, birthdate);
         }
@@ -33,12 +32,13 @@ namespace ModuleThreeAssignment
             return userResponseToPrompt;
         }
 
-        private static DateTime GetStudentBirthdateAsStringAndConvertToDateTime()
+        private static DateTime PromptUserForDateTimeInput(string userPromptMessage)
         {
-            Console.WriteLine("Enter the student's birthdate (MM/DD/YYYY): ");
-            string birthdateAsString = Console.ReadLine();
+            Console.Write(userPromptMessage);
+            string userResponseToPrompt = Console.ReadLine();
+            DateTime userResponseAsDateTime = DateTime.Parse(userResponseToPrompt);
 
-            return DateTime.Parse(birthdateAsString);
+            return userResponseAsDateTime;
         }
 
         static void PrintStudentDetails(string firstName, string lastName, DateTime birthdate)
@@ -51,18 +51,9 @@ namespace ModuleThreeAssignment
         {
             string firstName = PromptUserForStringInput("Enter the teacher's first name: ");
             string lastName = PromptUserForStringInput("Enter the teacher's last name: ");
-            
-            DateTime birthdate = GetTeacherBirthdateAsStringAndConvertToDateTime();
+            DateTime birthdate = PromptUserForDateTimeInput("Enter the teacher's birthdate (MM/DD/YYYY): ");
 
             PrintTeacherDetails(firstName, lastName, birthdate);
-        }
-
-        private static DateTime GetTeacherBirthdateAsStringAndConvertToDateTime()
-        {
-            Console.WriteLine("Enter the teacher's birthdate (MM/DD/YYYY): ");
-            string birthdateAsString = Console.ReadLine();
-
-            return DateTime.Parse(birthdateAsString);
         }
 
         private static void PrintTeacherDetails(string firstName, string lastName, DateTime birthdate)
