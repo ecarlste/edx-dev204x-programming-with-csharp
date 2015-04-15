@@ -105,10 +105,12 @@ namespace ModuleThreeAssignment
 
         private static void PrintCourseDetails(string courseName, string courseNumber, int courseCredits)
         {
-            Console.WriteLine("{0}Course Name: {1}" + 
-                              "{0}Course Number: {2}" + 
-                              "{0}Course Credit Hours: {3}{0}",
-                              Environment.NewLine, courseName, courseNumber, courseCredits);
+            Console.WriteLine(
+                "{0}Course Name: {1}" +
+                "{0}Course Number: {2}" +
+                "{0}Course Credit Hours: {3}{0}",
+                Environment.NewLine, courseName, courseNumber, courseCredits
+            );
         }
 
         private static void GetProgramInfo()
@@ -147,11 +149,60 @@ namespace ModuleThreeAssignment
         private static void PrintProgramDetails(string programName, string programDegreesAvailable,
             string programDepartmentHeadFullName)
         {
-            Console.WriteLine("{0}Program Name: {1}" +
-                              "{0}Degrees Available: {2}" +
-                              "{0}Department Head: {3}{0}",
-                              Environment.NewLine, programName, programDegreesAvailable,
-                              programDepartmentHeadFullName);
+            Console.WriteLine(
+                "{0}Program Name: {1}" +
+                "{0}Degrees Available: {2}" +
+                "{0}Department Head: {3}{0}",
+                Environment.NewLine, programName, programDegreesAvailable, programDepartmentHeadFullName
+            );
+        }
+
+        private static void GetDegreeInfo()
+        {
+            string degreeName = PromptUserForDegreeName();
+            int degreeTotalCreditsRequiredToComplete = PromptUserForTotalCreditsRequiredToCompleteConvertToInt32();
+            int degreeUpperLevelCreditsRequiredToComplete =
+                PromptUserForUpperLevelCreditsRequiredToCompleteConvertToInt32();
+
+            PrintDegreeDetails(degreeName, degreeTotalCreditsRequiredToComplete,
+                degreeUpperLevelCreditsRequiredToComplete);
+        }
+
+        private static string PromptUserForDegreeName()
+        {
+            Console.Write("Enter degree name: ");
+            string degreeName = Console.ReadLine();
+
+            return degreeName;
+        }
+
+        private static int PromptUserForTotalCreditsRequiredToCompleteConvertToInt32()
+        {
+            Console.Write("Enter the total number of credit hours to complete the degree: ");
+            string totalNumberOfCreditsToCompleteAsString = Console.ReadLine();
+            int totalNumberOfCreditsToComplete = Int32.Parse(totalNumberOfCreditsToCompleteAsString);
+
+            return totalNumberOfCreditsToComplete;
+        }
+
+        private static int PromptUserForUpperLevelCreditsRequiredToCompleteConvertToInt32()
+        {
+            Console.Write("Enter the number of upper level credit hours to complete the degree: ");
+            string numberOfUpperLevelCreditsToCompleteAsString = Console.ReadLine();
+            int numberOfUpperLevelCreditsToComplete = Int32.Parse(numberOfUpperLevelCreditsToCompleteAsString);
+
+            return numberOfUpperLevelCreditsToComplete;
+        }
+
+        private static void PrintDegreeDetails(string degreeName, int degreeTotalCreditsRequiredToComplete, int degreeUpperLevelCreditsRequiredToComplete)
+        {
+            Console.WriteLine(
+                "{0}Degree Name: {1}" +
+                "{0}Total Credit Hours: {2}" +
+                "{0}Upper Level Credits Hours: {3}{0}",
+                Environment.NewLine, degreeName, degreeTotalCreditsRequiredToComplete,
+                degreeUpperLevelCreditsRequiredToComplete
+            );
         }
 
         private static void TryValidatingBirthdateShowExceptionMessageOnFail()
@@ -170,10 +221,6 @@ namespace ModuleThreeAssignment
         private static bool IsStudentBirthdateValid(DateTime studentBirthdateToValidate)
         {
             throw new NotImplementedException();
-        }
-
-        private static void GetDegreeInfo()
-        {
         }
     }
 }
