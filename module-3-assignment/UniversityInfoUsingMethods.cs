@@ -17,14 +17,14 @@ namespace ModuleThreeAssignment
 
         static void GetStudentInfo()
         {
-            string firstNamePromptMessage = "Enter the student's first name: ";
-            string firstName = PromptUserForStringInput(firstNamePromptMessage);
+            string userPromptMessage = "Enter the student's first name: ";
+            string firstName = PromptUserForStringInput(userPromptMessage);
 
-            string lastNamePromptMessage = "Enter the student's last name: ";
-            string lastName = PromptUserForStringInput(lastNamePromptMessage);
+            userPromptMessage = "Enter the student's last name: ";
+            string lastName = PromptUserForStringInput(userPromptMessage);
 
-            string birthdatePromptMessage = "Enter the student's birthdate (MM/DD/YYYY): ";
-            DateTime birthdate = PromptUserForDateTimeInput(birthdatePromptMessage);
+            userPromptMessage = "Enter the student's birthdate (MM/DD/YYYY): ";
+            DateTime birthdate = PromptUserForDateTimeInput(userPromptMessage);
 
             PrintStudentDetails(firstName, lastName, birthdate);
         }
@@ -37,14 +37,14 @@ namespace ModuleThreeAssignment
 
         private static void GetTeacherInfo()
         {
-            string firstNamePromptMessage = "Enter the teacher's first name: ";
-            string firstName = PromptUserForStringInput(firstNamePromptMessage);
+            string userPromptMessage = "Enter the teacher's first name: ";
+            string firstName = PromptUserForStringInput(userPromptMessage);
 
-            string lastNamePromptMessage = "Enter the teacher's last name: ";
-            string lastName = PromptUserForStringInput(lastNamePromptMessage);
+            userPromptMessage = "Enter the teacher's last name: ";
+            string lastName = PromptUserForStringInput(userPromptMessage);
 
-            string birthdatePromptMessage = "Enter the teacher's birthdate (MM/DD/YYYY): ";
-            DateTime birthdate = PromptUserForDateTimeInput(birthdatePromptMessage);
+            userPromptMessage = "Enter the teacher's birthdate (MM/DD/YYYY): ";
+            DateTime birthdate = PromptUserForDateTimeInput(userPromptMessage);
 
             PrintTeacherDetails(firstName, lastName, birthdate);
         }
@@ -57,14 +57,14 @@ namespace ModuleThreeAssignment
 
         private static void GetCourseInfo()
         {
-            string courseNamePromptMessage = "Enter the course name: ";
-            string courseName = PromptUserForStringInput(courseNamePromptMessage);
+            string userPromptMessage = "Enter the course name: ";
+            string courseName = PromptUserForStringInput(userPromptMessage);
 
-            string courseNumberPromptMessage = "Enter the course number (i.e., DEV204x): ";
-            string courseNumber = PromptUserForStringInput(courseNumberPromptMessage);
+            userPromptMessage = "Enter the course number (i.e., DEV204x): ";
+            string courseNumber = PromptUserForStringInput(userPromptMessage);
 
-            string courseCreditsPromptMessage = "Enter the number of credits for the course: ";
-            int courseCredits = PromptUserForInt32Input(courseCreditsPromptMessage);
+            userPromptMessage = "Enter the number of credits for the course: ";
+            int courseCredits = PromptUserForInt32Input(userPromptMessage);
 
             PrintCourseDetails(courseName, courseNumber, courseCredits);
         }
@@ -81,16 +81,14 @@ namespace ModuleThreeAssignment
 
         private static void GetProgramInfo()
         {
-            string programNamePromptMessage = "Enter the program name: ";
-            string programName = PromptUserForStringInput(programNamePromptMessage);
+            string userPromptMessage = "Enter the program name: ";
+            string programName = PromptUserForStringInput(userPromptMessage);
 
-            string programDegreesAvailablePromptMessage =
-                "Enter the degrees available in the program (i.e., B.S.,M.S.,Ph.D.): ";
-            string programDegreesAvailable = PromptUserForStringInput(programDegreesAvailablePromptMessage);
+            userPromptMessage = "Enter the degrees available in the program (i.e., B.S.,M.S.,Ph.D.): ";
+            string programDegreesAvailable = PromptUserForStringInput(userPromptMessage);
 
-            string programDepartmentHeadFullNamePromptMessage = "Enter the department head's full name: ";
-            string programDepartmentHeadFullName =
-                PromptUserForStringInput(programDepartmentHeadFullNamePromptMessage);
+            userPromptMessage = "Enter the department head's full name: ";
+            string programDepartmentHeadFullName = PromptUserForStringInput(userPromptMessage);
 
             PrintProgramDetails(programName, programDegreesAvailable, programDepartmentHeadFullName);
         }
@@ -108,24 +106,21 @@ namespace ModuleThreeAssignment
 
         private static void GetDegreeInfo()
         {
-            string degreeNamePromptMessage = "Enter degree name: ";
-            string degreeName = PromptUserForStringInput(degreeNamePromptMessage);
+            string userPromptMessage = "Enter degree name: ";
+            string degreeName = PromptUserForStringInput(userPromptMessage);
 
-            string degreeTotalCreditsRequiredToCompletePromptMessage =
-                "Enter the total number of credit hours to complete the degree: ";
-            int degreeTotalCreditsRequiredToComplete =
-                PromptUserForInt32Input(degreeTotalCreditsRequiredToCompletePromptMessage);
+            userPromptMessage = "Enter the total number of credit hours to complete the degree: ";
+            int degreeTotalCreditsRequiredToComplete = PromptUserForInt32Input(userPromptMessage);
 
-            string degreeUpperLevelCreditsRequiredToCompleteMessagePrompt =
-                "Enter the number of upper level credit hours to complete the degree: ";
-            int degreeUpperLevelCreditsRequiredToComplete =
-                PromptUserForInt32Input(degreeUpperLevelCreditsRequiredToCompleteMessagePrompt);
+            userPromptMessage = "Enter the number of upper level credit hours to complete the degree: ";
+            int degreeUpperLevelCreditsRequiredToComplete = PromptUserForInt32Input(userPromptMessage);
 
             PrintDegreeDetails(degreeName, degreeTotalCreditsRequiredToComplete,
                 degreeUpperLevelCreditsRequiredToComplete);
         }
 
-        private static void PrintDegreeDetails(string degreeName, int degreeTotalCreditsRequiredToComplete, int degreeUpperLevelCreditsRequiredToComplete)
+        private static void PrintDegreeDetails(string degreeName, int degreeTotalCreditsRequiredToComplete,
+            int degreeUpperLevelCreditsRequiredToComplete)
         {
             Console.WriteLine(
                 "{0}Degree Name: {1}" +
