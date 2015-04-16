@@ -2,7 +2,7 @@
 
 namespace ModuleOne
 {
-    class Program
+    class UniversityInfoVariablesOnly
     {
         static void Main(string[] args)
         {
