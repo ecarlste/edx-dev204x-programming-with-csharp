@@ -46,6 +46,37 @@ namespace ModuleFourAssignment
             }
         }
 
+        struct Teacher 
+        {
+            internal string firstName;
+            internal string lastName;
+
+            internal DateTime birthdate;
+
+            internal string addressLine1;
+            internal string addressLine2;
+            internal string city;
+            internal string stateOrProvince;
+            internal string zipOrPostalCode;
+            internal string country;
+
+            public Teacher(string firstName, string lastName, DateTime birthdate, string addressLine1,
+                string addressLine2, string city, string stateOrProvince, string zipOrPostalCode, string country)
+            {
+                this.firstName = firstName;
+                this.lastName = lastName;
+
+                this.birthdate = birthdate;
+
+                this.addressLine1 = addressLine1;
+                this.addressLine2 = addressLine2;
+                this.city = city;
+                this.stateOrProvince = stateOrProvince;
+                this.zipOrPostalCode = zipOrPostalCode;
+                this.country = country;
+            }
+        }
+
         static void Main(string[] args)
         {
             Student[] students = CreateStudentArrayAndPopulateOneEntry();
