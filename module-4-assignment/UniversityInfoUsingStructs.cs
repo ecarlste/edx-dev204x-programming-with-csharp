@@ -101,6 +101,20 @@ namespace ModuleFourAssignment
             }
         }
 
+        struct AcademicCourse
+        {
+            internal string name;
+            internal string referenceNumber;
+            internal int creditHours;
+
+            public AcademicCourse(string name, string referenceNumber, int creditHours)
+            {
+                this.name = name;
+                this.referenceNumber = referenceNumber;
+                this.creditHours = creditHours;
+            }
+        }
+
         static void Main(string[] args)
         {
             Student[] students = CreateStudentArrayAndPopulateOneEntry();
