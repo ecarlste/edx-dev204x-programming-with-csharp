@@ -86,7 +86,7 @@ namespace ModuleFourAssignment
                 MasterOfScience = 0x02,
                 DoctorOfPhilosophy = 0x04,
 
-                AllDegrees = BachelorOfScience & MasterOfScience & DoctorOfPhilosophy,
+                AllAvailableDegrees = BachelorOfScience & MasterOfScience & DoctorOfPhilosophy,
             }
 
             internal string name;
@@ -137,7 +137,26 @@ namespace ModuleFourAssignment
 
         private static void OutputValuesOfStudentStruct(Student student)
         {
-            throw new NotImplementedException();
+            Console.WriteLine(
+                "First Name: {0}{1}" +
+                "Last Name: {2}{1}" +
+                "Birthdate: {3:MM/dd/yyyy}{1}{1}" +
+                
+                "Address{1}" +
+                "-------{1}" +
+                "{4} {5}{1}" +
+                "{6}, {7}{1}" +
+                "{8}, {9}{1}{1}" +
+
+                "Account Balance: {10}{1}" +
+                "Overall GPA: {11}{1}" +
+                "Gender: {12}{1}" +
+                "Student Currently Enrolled?: {13}",
+
+                student.firstName, Environment.NewLine, student.lastName, student.birthdate, student.addressLine1,
+                student.addressLine2, student.city, student.stateOrProvince, student.zipOrPostalCode, student.country,
+                student.accountBalance, student.overallGPA, student.gender, student.isEnrolled
+                );
         }
     }
 }
