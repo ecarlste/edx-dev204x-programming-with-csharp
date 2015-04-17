@@ -46,7 +46,7 @@ namespace ModuleFourAssignment
             }
         }
 
-        struct Teacher 
+        struct Professor
         {
             internal string firstName;
             internal string lastName;
@@ -60,7 +60,7 @@ namespace ModuleFourAssignment
             internal string zipOrPostalCode;
             internal string country;
 
-            public Teacher(string firstName, string lastName, DateTime birthdate, string addressLine1,
+            public Professor(string firstName, string lastName, DateTime birthdate, string addressLine1,
                 string addressLine2, string city, string stateOrProvince, string zipOrPostalCode, string country)
             {
                 this.firstName = firstName;
@@ -77,11 +77,35 @@ namespace ModuleFourAssignment
             }
         }
 
+        struct AcademicProgram
+        {
+            [Flags]
+            internal enum AcademicDegrees
+            {
+                BachelorOfScience = 0x01,
+                MasterOfScience = 0x02,
+                DoctorOfPhilosophy = 0x04,
+
+                AllDegrees = BachelorOfScience & MasterOfScience & DoctorOfPhilosophy,
+            }
+
+            internal string name;
+            internal AcademicDegrees degreesOffered;
+            internal string departmentHeadFullName;
+
+            public AcademicProgram(string name, AcademicDegrees degreesOffered, string departmentHeadFullName)
+            {
+                this.name = name;
+                this.degreesOffered = degreesOffered;
+                this.departmentHeadFullName = departmentHeadFullName;
+            }
+        }
+
         static void Main(string[] args)
         {
             Student[] students = CreateStudentArrayAndPopulateOneEntry();
 
-            Console.WriteLine(students[0].firstName);
+            OutputValuesOfStudentStruct(students[0]);
         }
 
         private static Student[] CreateStudentArrayAndPopulateOneEntry()
@@ -95,6 +119,11 @@ namespace ModuleFourAssignment
                 );
 
             return students;
+        }
+
+        private static void OutputValuesOfStudentStruct(Student student)
+        {
+            throw new NotImplementedException();
         }
     }
 }
