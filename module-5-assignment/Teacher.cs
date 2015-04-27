@@ -9,63 +9,63 @@ namespace ModuleFiveAssignment
     class Teacher
     {
         private string firstName;
-        internal string FirstName
+        private string FirstName
         {
             get { return firstName; }
             set { firstName = value; }
         }
 
-        private string lastName;
-        internal string LastName
+        string lastName;
+        private string LastName
         {
             get { return lastName; }
             set { lastName = value; }
         }
 
-        private DateTime birthdate;
-        internal DateTime Birthdate
+        DateTime birthdate;
+        private DateTime Birthdate
         {
             get { return birthdate; }
             set { birthdate = value; }
         }
 
-        private string addressLine1;
-        internal string AddressLine1
+        string addressLine1;
+        private string AddressLine1
         {
             get { return addressLine1; }
             set { addressLine1 = value; }
         }
 
-        private string addressLine2;
-        internal string AddressLine2
+        string addressLine2;
+        private string AddressLine2
         {
             get { return addressLine2; }
             set { addressLine2 = value; }
         }
 
-        private string city;
-        internal string City
+        string city;
+        private string City
         {
             get { return city; }
             set { city = value; }
         }
 
-        private string stateOrProvince;
-        internal string StateOrProvince
+        string stateOrProvince;
+        private string StateOrProvince
         {
             get { return stateOrProvince; }
             set { stateOrProvince = value; }
         }
 
-        private string zipOrPostalCode;
-        internal string ZipOrPostalCode
+        string zipOrPostalCode;
+        private string ZipOrPostalCode
         {
             get { return zipOrPostalCode; }
             set { zipOrPostalCode = value; }
         }
 
-        private string country;
-        internal string Country
+        string country;
+        private string Country
         {
             get { return country; }
             set { country = value; }
