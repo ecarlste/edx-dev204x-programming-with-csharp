@@ -58,5 +58,19 @@ namespace ModuleFiveAssignment
 
         public Course(string name) : this(name, "", 0)
         {}
+
+        internal void AddStudent(Student[] studentsToAdd)
+        {
+            foreach (Student student in studentsToAdd)
+            {
+                AddStudent(student);
+            }
+        }
+
+        internal void AddStudent(Student student)
+        {
+            int studentCount = studentsEnrolled.Count(s => s != null);
+            studentsEnrolled[studentCount] = student;
+        }
     }
 }
