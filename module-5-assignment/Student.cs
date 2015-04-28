@@ -99,9 +99,11 @@ namespace ModuleFiveAssignment
             set { isEnrolled = value; }
         }
 
-        public Student(string firstName, string lastName, DateTime birthdate, string addressLine1,
-            string addressLine2, string city, string stateOrProvince, string zipOrPostalCode, string country,
-            Decimal accountBalance, float overallGPA, char gender, bool isEnrolled)
+        public Student(string firstName, string lastName, DateTime birthdate,
+            string addressLine1, string addressLine2, string city,
+            string stateOrProvince, string zipOrPostalCode, string country,
+            Decimal accountBalance, float overallGPA, char gender,
+            bool isEnrolled)
         {
             this.firstName = firstName;
             this.lastName = lastName;

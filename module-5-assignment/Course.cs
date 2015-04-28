@@ -28,6 +28,20 @@ namespace ModuleFiveAssignment
             get { return creditHours; }
             set { creditHours = value; }
         }
+        
+        Student[] studentsEnrolled;
+        internal Student[] StudentsEnrolled
+        {
+            get { return studentsEnrolled; }
+            set { studentsEnrolled = value; }
+        }
+
+        Teacher[] TeachersAndAssistants;
+        internal Teacher[] TeachersAndAssistants1
+        {
+            get { return TeachersAndAssistants; }
+            set { TeachersAndAssistants = value; }
+        }
 
         public Course(string name, string referenceNumber, int creditHours)
         {
