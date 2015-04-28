@@ -2,12 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ModuleFiveAssignment
 {
     class Student
     {
+        static int numberOfStudentsEnrolled = 0;
+        public static int NumberOfStudentsEnrolled
+        {
+            get { return Student.numberOfStudentsEnrolled; }
+        }
+
         string firstName;
         public string FirstName
         {
@@ -121,6 +128,21 @@ namespace ModuleFiveAssignment
             this.overallGPA = overallGPA;
             this.gender = gender;
             this.isEnrolled = isEnrolled;
+
+            Interlocked.Increment(ref numberOfStudentsEnrolled);
+        }
+
+        ~Student()
+        {
+            /* THIS IS NOT GOOD ENOUGH!!! Even though we have locked the thread
+             * for both our constructor's increment and our destuctor's
+             * decrement, we still don't know when the object will actually be
+             * dealt with by the garbage collector. We would need to keep a
+             * list of weak references to all the objects and when we check to
+             * see how many there are, remove all the non-active weak
+             * references to our Students created list. */
+
+            Interlocked.Decrement(ref numberOfStudentsEnrolled);
         }
     }
 }
