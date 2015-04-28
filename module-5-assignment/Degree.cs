@@ -28,5 +28,17 @@ namespace ModuleFiveAssignment
             get { return upperLevelCreditsRequired; }
             set { upperLevelCreditsRequired = value; }
         }
+
+        public Degree(string name) : this(name, 0, 0)
+        {}
+
+        public Degree(string name, int totalCreditsRequired,
+            int upperLevelCreditsRequired)
+        {
+            this.name = name;
+            this.totalCreditsRequired = totalCreditsRequired;
+            this.upperLevelCreditsRequired = upperLevelCreditsRequired;
+        }
+        
     }
 }
