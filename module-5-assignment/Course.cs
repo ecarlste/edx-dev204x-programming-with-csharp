@@ -37,6 +37,7 @@ namespace ModuleFiveAssignment
         }
 
         Teacher[] teachersAndAssistants;
+        private string p;
         internal Teacher[] TeachersAndAssistants
         {
             get { return teachersAndAssistants; }
@@ -55,5 +56,8 @@ namespace ModuleFiveAssignment
             studentsEnrolled = new Student[3];
             teachersAndAssistants = new Teacher[3];
         }
+
+        public Course(string name) : this(name, "", 0)
+        {}
     }
 }
