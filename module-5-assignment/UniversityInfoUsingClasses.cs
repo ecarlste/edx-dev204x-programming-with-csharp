@@ -11,7 +11,6 @@ namespace ModuleFiveAssignment
         static void Main(string[] args)
         {
             Course programmingWithCSharp = new Course("Programming with C#");
-            
             programmingWithCSharp.AddStudent(
                 new Student[]
                 {
@@ -19,12 +18,14 @@ namespace ModuleFiveAssignment
                     new Student(),
                     new Student()
                 });
-
             programmingWithCSharp.AddTeacher(new Teacher());
 
             Degree bachelorOfScience = new Degree("Bachelor of Science");
-
             bachelorOfScience.AddCourse(programmingWithCSharp);
+
+            UProgram informationTechnologyProgram = new UProgram(
+                "Information Technology");
+            informationTechnologyProgram.AddDegree(bachelorOfScience);
         }
     }
 }

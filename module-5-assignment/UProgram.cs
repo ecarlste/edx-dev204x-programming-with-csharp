@@ -15,11 +15,10 @@ namespace ModuleFiveAssignment
             set { name = value; }
         }
 
-        Degree[] degreesOffered;
-        internal Degree[] DegreesOffered
+        List<Degree> degreesOffered;
+        public List<Degree> DegreesOffered
         {
             get { return degreesOffered; }
-            set { degreesOffered = value; }
         }
 
         string departmentHeadFullName;
@@ -29,12 +28,20 @@ namespace ModuleFiveAssignment
             set { departmentHeadFullName = value; }
         }
 
-        public UProgram(string name, Degree[] degreesOffered,
+        public UProgram(string name, List<Degree> degreesOffered,
             string departmentHeadFullName)
         {
             this.name = name;
             this.degreesOffered = degreesOffered;
             this.departmentHeadFullName = departmentHeadFullName;
+        }
+
+        public UProgram(string name) : this(name, new List<Degree>(), "")
+        {}
+
+        internal void AddDegree(Degree degree)
+        {
+            degreesOffered.Add(degree);
         }
     }
 }
