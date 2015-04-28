@@ -36,18 +36,24 @@ namespace ModuleFiveAssignment
             set { studentsEnrolled = value; }
         }
 
-        Teacher[] TeachersAndAssistants;
-        internal Teacher[] TeachersAndAssistants1
+        Teacher[] teachersAndAssistants;
+        internal Teacher[] TeachersAndAssistants
         {
-            get { return TeachersAndAssistants; }
-            set { TeachersAndAssistants = value; }
+            get { return teachersAndAssistants; }
+            set { teachersAndAssistants = value; }
         }
+
+        public Course() : this("", "", 0)
+        {}
 
         public Course(string name, string referenceNumber, int creditHours)
         {
             this.name = name;
             this.referenceNumber = referenceNumber;
             this.creditHours = creditHours;
+
+            studentsEnrolled = new Student[3];
+            teachersAndAssistants = new Teacher[3];
         }
     }
 }
