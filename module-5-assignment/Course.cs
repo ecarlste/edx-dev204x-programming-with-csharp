@@ -37,7 +37,6 @@ namespace ModuleFiveAssignment
         }
 
         Teacher[] teachersAndAssistants;
-        private string p;
         internal Teacher[] TeachersAndAssistants
         {
             get { return teachersAndAssistants; }
