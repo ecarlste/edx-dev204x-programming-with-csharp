@@ -8,64 +8,64 @@ namespace ModuleFiveAssignment
 {
     class Teacher
     {
-        private string firstName;
-        private string FirstName
+        string firstName;
+        public string FirstName
         {
             get { return firstName; }
             set { firstName = value; }
         }
 
         string lastName;
-        private string LastName
+        public string LastName
         {
             get { return lastName; }
             set { lastName = value; }
         }
 
         DateTime birthdate;
-        private DateTime Birthdate
+        public DateTime Birthdate
         {
             get { return birthdate; }
             set { birthdate = value; }
         }
 
         string addressLine1;
-        private string AddressLine1
+        public string AddressLine1
         {
             get { return addressLine1; }
             set { addressLine1 = value; }
         }
 
         string addressLine2;
-        private string AddressLine2
+        public string AddressLine2
         {
             get { return addressLine2; }
             set { addressLine2 = value; }
         }
 
         string city;
-        private string City
+        public string City
         {
             get { return city; }
             set { city = value; }
         }
 
         string stateOrProvince;
-        private string StateOrProvince
+        public string StateOrProvince
         {
             get { return stateOrProvince; }
             set { stateOrProvince = value; }
         }
 
         string zipOrPostalCode;
-        private string ZipOrPostalCode
+        public string ZipOrPostalCode
         {
             get { return zipOrPostalCode; }
             set { zipOrPostalCode = value; }
         }
 
         string country;
-        private string Country
+        public string Country
         {
             get { return country; }
             set { country = value; }

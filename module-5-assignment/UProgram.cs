@@ -39,7 +39,7 @@ namespace ModuleFiveAssignment
         public UProgram(string name) : this(name, new List<Degree>(), "")
         {}
 
-        internal void AddDegree(Degree degree)
+        public void AddDegree(Degree degree)
         {
             degreesOffered.Add(degree);
         }

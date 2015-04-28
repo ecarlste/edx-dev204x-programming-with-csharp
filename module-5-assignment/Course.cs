@@ -30,17 +30,15 @@ namespace ModuleFiveAssignment
         }
         
         Student[] studentsEnrolled;
-        internal Student[] StudentsEnrolled
+        public Student[] StudentsEnrolled
         {
             get { return studentsEnrolled; }
-            set { studentsEnrolled = value; }
         }
 
         Teacher[] teachersAndAssistants;
-        internal Teacher[] TeachersAndAssistants
+        public Teacher[] TeachersAndAssistants
         {
             get { return teachersAndAssistants; }
-            set { teachersAndAssistants = value; }
         }
 
         public Course() : this("", "", 0)
@@ -59,7 +57,7 @@ namespace ModuleFiveAssignment
         public Course(string name) : this(name, "", 0)
         {}
 
-        internal void AddStudent(Student[] studentsToAdd)
+        public void AddStudent(Student[] studentsToAdd)
         {
             foreach (Student student in studentsToAdd)
             {
@@ -67,13 +65,13 @@ namespace ModuleFiveAssignment
             }
         }
 
-        internal void AddStudent(Student student)
+        public void AddStudent(Student student)
         {
             int studentCount = studentsEnrolled.Count(s => s != null);
             studentsEnrolled[studentCount] = student;
         }
 
-        internal void AddTeacher(Teacher teacher)
+        public void AddTeacher(Teacher teacher)
         {
             int teacherCount = teachersAndAssistants.Count(s => s != null);
             teachersAndAssistants[teacherCount] = teacher;
