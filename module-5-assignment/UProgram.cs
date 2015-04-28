@@ -8,16 +8,6 @@ namespace ModuleFiveAssignment
 {
     class UProgram
     {
-        [Flags]
-        public enum AcademicDegrees
-        {
-            BachelorOfScience = 0x01,
-            MasterOfScience = 0x02,
-            DoctorOfPhilosophy = 0x04,
-
-            AllAvailableDegrees = BachelorOfScience & MasterOfScience & DoctorOfPhilosophy,
-        }
-
         string name;
         public string Name
         {
@@ -25,8 +15,8 @@ namespace ModuleFiveAssignment
             set { name = value; }
         }
 
-        AcademicDegrees degreesOffered;
-        internal AcademicDegrees DegreesOffered
+        Degree[] degreesOffered;
+        internal Degree[] DegreesOffered
         {
             get { return degreesOffered; }
             set { degreesOffered = value; }
@@ -39,7 +29,7 @@ namespace ModuleFiveAssignment
             set { departmentHeadFullName = value; }
         }
 
-        public UProgram(string name, AcademicDegrees degreesOffered,
+        public UProgram(string name, Degree[] degreesOffered,
             string departmentHeadFullName)
         {
             this.name = name;
