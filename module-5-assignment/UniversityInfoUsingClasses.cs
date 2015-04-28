@@ -23,6 +23,8 @@ namespace ModuleFiveAssignment
             programmingWithCSharp.AddTeacher(new Teacher());
 
             Degree bachelorOfScience = new Degree("Bachelor of Science");
+
+            bachelorOfScience.AddCourse(programmingWithCSharp);
         }
     }
 }

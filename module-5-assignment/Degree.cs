@@ -29,6 +29,12 @@ namespace ModuleFiveAssignment
             set { upperLevelCreditsRequired = value; }
         }
 
+        List<Course> requiredCourses;
+        public List<Course> RequiredCourses
+        {
+            get { return requiredCourses; }
+        }
+
         public Degree(string name) : this(name, 0, 0)
         {}
 
@@ -38,7 +44,13 @@ namespace ModuleFiveAssignment
             this.name = name;
             this.totalCreditsRequired = totalCreditsRequired;
             this.upperLevelCreditsRequired = upperLevelCreditsRequired;
+
+            this.requiredCourses = new List<Course>();
         }
-        
+
+        public void AddCourse(Course courseToAdd)
+        {
+            requiredCourses.Add(courseToAdd);
+        }
     }
 }
