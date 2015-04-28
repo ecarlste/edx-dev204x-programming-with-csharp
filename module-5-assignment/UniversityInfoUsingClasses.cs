@@ -10,6 +10,7 @@ namespace ModuleFiveAssignment
     {
         static void Main(string[] args)
         {
+            Student studentOne = new Student();
         }
     }
 }

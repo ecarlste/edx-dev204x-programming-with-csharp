@@ -132,6 +132,10 @@ namespace ModuleFiveAssignment
             Interlocked.Increment(ref numberOfStudentsEnrolled);
         }
 
+        public Student() : this("", "", new DateTime(), "", "", "", "", "", "",
+            0m, 0f, '\0', false)
+        {}
+
         ~Student()
         {
             /* THIS IS NOT GOOD ENOUGH!!! Even though we have locked the thread
