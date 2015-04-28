@@ -87,5 +87,8 @@ namespace ModuleFiveAssignment
             this.zipOrPostalCode = zipOrPostalCode;
             this.country = country;
         }
+
+        public Teacher() : this("", "", new DateTime(), "", "", "", "", "", "")
+        {}
     }
 }

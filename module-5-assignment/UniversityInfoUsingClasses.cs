@@ -10,15 +10,17 @@ namespace ModuleFiveAssignment
     {
         static void Main(string[] args)
         {
-            Student[] studentsToAdd = new Student[]
-            {
-                new Student(),
-                new Student(),
-                new Student()
-            };
-
             Course programmingWithCSharp = new Course("Programming with C#");
-            programmingWithCSharp.AddStudent(studentsToAdd);
+            
+            programmingWithCSharp.AddStudent(
+                new Student[]
+                {
+                    new Student(),
+                    new Student(),
+                    new Student()
+                });
+
+            programmingWithCSharp.AddTeacher(new Teacher());
         }
     }
 }

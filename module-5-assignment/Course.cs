@@ -72,5 +72,11 @@ namespace ModuleFiveAssignment
             int studentCount = studentsEnrolled.Count(s => s != null);
             studentsEnrolled[studentCount] = student;
         }
+
+        internal void AddTeacher(Teacher teacher)
+        {
+            int teacherCount = teachersAndAssistants.Count(s => s != null);
+            teachersAndAssistants[teacherCount] = teacher;
+        }
     }
 }
