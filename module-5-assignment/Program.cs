@@ -2,7 +2,7 @@
 
 namespace ModuleFiveAssignment
 {
-    class UniversityInfoUsingClasses
+    class Program
     {
         static void Main(string[] args)
         {
