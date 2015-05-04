@@ -24,5 +24,20 @@ namespace CSharpFileMergeTool
         {
             InitializeComponent();
         }
+
+        private void fileNamesTextBlock_Drop(object sender, DragEventArgs e)
+        {
+            string[] fileNames = (string[])e.Data.GetData(DataFormats.FileDrop, true);
+            TextBlock textBlock = sender as TextBlock;
+
+            StringBuilder sb = new StringBuilder();
+
+            foreach (string fileName in fileNames)
+            {
+                sb.Append(fileName + Environment.NewLine);
+            }
+
+            textBlock.Text = sb.ToString();
+        }
     }
 }
