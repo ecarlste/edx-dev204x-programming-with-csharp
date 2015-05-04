@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 
 namespace ModuleFiveSixAssignment
 {
@@ -23,5 +24,10 @@ namespace ModuleFiveSixAssignment
 
         public Teacher() : this("", "", new DateTime(), "", "", "", "", "", "")
         {}
+
+        public void GradeTest()
+        {
+            Console.WriteLine("{0} {1} just graded a test!", firstName, lastName);
+        }
     }
 }

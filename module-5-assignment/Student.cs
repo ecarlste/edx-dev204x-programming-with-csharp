@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Threading;
 
 namespace ModuleFiveSixAssignment
@@ -25,13 +26,6 @@ namespace ModuleFiveSixAssignment
             set { overallGPA = value; }
         }
 
-        char gender;
-        public char Gender
-        {
-            get { return gender; }
-            set { gender = value; }
-        }
-
         bool isEnrolled;
         public bool IsEnrolled
         {
@@ -42,7 +36,7 @@ namespace ModuleFiveSixAssignment
         public Student(string firstName, string lastName, DateTime birthdate,
             string addressLine1, string addressLine2, string city,
             string stateOrProvince, string zipOrPostalCode, string country,
-            Decimal accountBalance, float overallGPA, char gender,
+            Decimal accountBalance, float overallGPA, Gender gender,
             bool isEnrolled)
         {
             this.firstName = firstName;
@@ -59,14 +53,14 @@ namespace ModuleFiveSixAssignment
 
             this.accountBalance = accountBalance;
             this.overallGPA = overallGPA;
-            this.gender = gender;
+            this.Gender = gender;
             this.isEnrolled = isEnrolled;
 
             Interlocked.Increment(ref numberOfStudentsEnrolled);
         }
 
         public Student() : this("", "", new DateTime(), "", "", "", "", "", "",
-            0m, 0f, '\0', false)
+            0m, 0f, Gender.NotSpecified, false)
         {}
 
         ~Student()
@@ -80,6 +74,11 @@ namespace ModuleFiveSixAssignment
              * references to our Students created list. */
 
             Interlocked.Decrement(ref numberOfStudentsEnrolled);
+        }
+
+        public void TakeTest()
+        {
+            Console.WriteLine("{0} {1} just took a test!", firstName, lastName);
         }
     }
 }

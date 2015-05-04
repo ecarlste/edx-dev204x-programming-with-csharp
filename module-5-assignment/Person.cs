@@ -67,5 +67,20 @@ namespace ModuleFiveSixAssignment
             get { return country; }
             set { country = value; }
         }
+
+        protected Gender gender;
+        public Gender Gender
+        {
+            get { return gender; }
+            set { gender = value; }
+        }
+    }
+
+    enum Gender
+    {
+        NotSpecified,
+        Female,
+        Male,
+        Other
     }
 }
