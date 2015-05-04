@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ModuleFiveAssignment
+namespace ModuleFiveSixAssignment
 {
     class UProgram
     {

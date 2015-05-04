@@ -1,72 +1,9 @@
 ﻿using System;
 
-namespace ModuleFiveAssignment
+namespace ModuleFiveSixAssignment
 {
-    class Teacher
+    class Teacher : Person
     {
-        string firstName;
-        public string FirstName
-        {
-            get { return firstName; }
-            set { firstName = value; }
-        }
-
-        string lastName;
-        public string LastName
-        {
-            get { return lastName; }
-            set { lastName = value; }
-        }
-
-        DateTime birthdate;
-        public DateTime Birthdate
-        {
-            get { return birthdate; }
-            set { birthdate = value; }
-        }
-
-        string addressLine1;
-        public string AddressLine1
-        {
-            get { return addressLine1; }
-            set { addressLine1 = value; }
-        }
-
-        string addressLine2;
-        public string AddressLine2
-        {
-            get { return addressLine2; }
-            set { addressLine2 = value; }
-        }
-
-        string city;
-        public string City
-        {
-            get { return city; }
-            set { city = value; }
-        }
-
-        string stateOrProvince;
-        public string StateOrProvince
-        {
-            get { return stateOrProvince; }
-            set { stateOrProvince = value; }
-        }
-
-        string zipOrPostalCode;
-        public string ZipOrPostalCode
-        {
-            get { return zipOrPostalCode; }
-            set { zipOrPostalCode = value; }
-        }
-
-        string country;
-        public string Country
-        {
-            get { return country; }
-            set { country = value; }
-        }
-
         public Teacher(string firstName, string lastName, DateTime birthdate,
             string addressLine1, string addressLine2, string city,
             string stateOrProvince, string zipOrPostalCode, string country)
