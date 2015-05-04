@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "module-2-assignment", "modu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "module-5-and-6-assignment", "module-5-assignment\module-5-and-6-assignment.csproj", "{EE367B3F-0041-43FB-AB83-718B6A92D6E7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpFileMergeTool", "CSharpFileMergeTool\CSharpFileMergeTool.csproj", "{7F099EEA-2A9E-4A0E-ACBC-4289BD24CB6D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{EE367B3F-0041-43FB-AB83-718B6A92D6E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE367B3F-0041-43FB-AB83-718B6A92D6E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE367B3F-0041-43FB-AB83-718B6A92D6E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F099EEA-2A9E-4A0E-ACBC-4289BD24CB6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F099EEA-2A9E-4A0E-ACBC-4289BD24CB6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F099EEA-2A9E-4A0E-ACBC-4289BD24CB6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F099EEA-2A9E-4A0E-ACBC-4289BD24CB6D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
