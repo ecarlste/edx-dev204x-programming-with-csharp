@@ -1,6 +1,7 @@
-﻿using System.Linq;
+﻿
+using System.Linq;
 
-namespace ModuleFiveAssignment
+namespace ModuleFiveSixAssignment
 {
     class Course
     {

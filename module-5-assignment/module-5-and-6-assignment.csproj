@@ -7,7 +7,7 @@
     <ProjectGuid>{EE367B3F-0041-43FB-AB83-718B6A92D6E7}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ModuleFiveAssignment</RootNamespace>
+    <RootNamespace>ModuleFiveSixAssignment</RootNamespace>
     <AssemblyName>module-5-assignment</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -43,9 +43,10 @@
   <ItemGroup>
     <Compile Include="Course.cs" />
     <Compile Include="Degree.cs" />
+    <Compile Include="Person.cs" />
     <Compile Include="Student.cs" />
     <Compile Include="Teacher.cs" />
-    <Compile Include="UniversityInfoUsingClasses.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UProgram.cs" />
   </ItemGroup>

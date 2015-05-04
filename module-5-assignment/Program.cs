@@ -1,8 +1,9 @@
-﻿using System;
+﻿
+using System;
 
-namespace ModuleFiveAssignment
+namespace ModuleFiveSixAssignment
 {
-    class UniversityInfoUsingClasses
+    class Program
     {
         static void Main(string[] args)
         {

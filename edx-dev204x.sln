@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "module-4-assignment", "modu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "module-2-assignment", "module-2-assignment\module-2-assignment.csproj", "{F05AD66C-F53A-4147-8142-3DE37A288A8F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "module-5-assignment", "module-5-assignment\module-5-assignment.csproj", "{EE367B3F-0041-43FB-AB83-718B6A92D6E7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "module-5-and-6-assignment", "module-5-assignment\module-5-and-6-assignment.csproj", "{EE367B3F-0041-43FB-AB83-718B6A92D6E7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
