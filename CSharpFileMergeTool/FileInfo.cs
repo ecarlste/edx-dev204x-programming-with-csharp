@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace CSharpFileMergeTool
@@ -20,14 +21,27 @@ namespace CSharpFileMergeTool
             get { return name; }
         }
 
+        string fullPathName;
         public string FullPathName
         {
-            get { return path + name; }
+            get { return fullPathName; }
         }
 
-        public FileInfo(string pathName)
+        List<string> imports;
+        public List<string> Imports
         {
-            string[] pathComponents = pathName.Split('\\');
+            get { return imports; }
+        }
+
+        string _namespace;
+        public string Namespace
+        {
+            get { return _namespace; }
+        }
+
+        public FileInfo(string fullPathName)
+        {
+            string[] pathComponents = fullPathName.Split('\\');
             StringBuilder sb = new StringBuilder();
 
             for (int i = 0; i < pathComponents.Length - 1; i++)
@@ -41,6 +55,31 @@ namespace CSharpFileMergeTool
 
             path = sb.ToString();
             name = pathComponents[pathComponents.Length - 1];
+            this.fullPathName = fullPathName;
+
+            string textFromFile = System.IO.File.ReadAllText(@fullPathName);
+
+            ParseImports(textFromFile);
+            ParseNamespace(textFromFile);
+        }
+
+        private void ParseNamespace(string textFromFile)
+        {
+            string pattern = @"namespace\s+(?<namespace>\w+)";
+            Match match = Regex.Match(textFromFile, pattern);
+
+            _namespace = match.Groups["namespace"].Value;
+        }
+
+        private void ParseImports(string textFromFile)
+        {
+            imports = new List<string>();
+            string pattern = @"using\s+(?<import>[\w\.]+);";
+
+            foreach (Match match in Regex.Matches(textFromFile, pattern))
+            {
+                imports.Add(match.Groups["import"].Value);
+            }
         }
 
         public int CompareTo(object obj)
