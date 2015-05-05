@@ -20,20 +20,31 @@ namespace CSharpFileMergeTool
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        string mergedFileText = "testing text";
+        public string MergedFileText
+        {
+            get { return mergedFileText; }
+            set
+            {
+                mergedFileText = value;
+                OnPropertyChanged("MergedFileText");
+            }
+        }
+
         ObservableCollection<string> imports = new ObservableCollection<string>();
         public ObservableCollection<string> Imports
         {
             get { return imports; }
-            set { imports = value; }
         }
 
         ObservableCollection<FileInfo> fileList = new ObservableCollection<FileInfo>();
         public ObservableCollection<FileInfo> FileList
         {
             get { return fileList; }
-            set { fileList = value; }
         }
 
         public MainWindow()
@@ -53,7 +64,28 @@ namespace CSharpFileMergeTool
                 AddFileInfoIfNotFoundInList(fileInfo);
             }
 
+            RebuildMergedFileText();
+
             e.Handled = true;
+        }
+
+        private void RebuildMergedFileText()
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+
+            stringBuilder.Append(Environment.NewLine);
+
+            foreach (string import in imports)
+            {
+                stringBuilder.Append("using " + import + ";" + Environment.NewLine);
+            }
+
+            stringBuilder.Append(Environment.NewLine + "namespace " + fileList[0].Namespace +
+                Environment.NewLine + "{" + Environment.NewLine);
+
+            stringBuilder.Append("}" + Environment.NewLine);
+
+            MergedFileText = stringBuilder.ToString();
         }
 
         private void AddFileInfoIfNotFoundInList(FileInfo fileInfo)
@@ -71,6 +103,14 @@ namespace CSharpFileMergeTool
             updatedImports.Sort();
 
             imports = new ObservableCollection<string>(updatedImports);
+        }
+
+        protected void OnPropertyChanged(string name)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
         }
     }
 }
