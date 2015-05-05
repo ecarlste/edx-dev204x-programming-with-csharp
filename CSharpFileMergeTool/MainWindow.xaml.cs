@@ -83,6 +83,19 @@ namespace CSharpFileMergeTool
             stringBuilder.Append(Environment.NewLine + "namespace " + fileList[0].Namespace +
                 Environment.NewLine + "{" + Environment.NewLine);
 
+            foreach (FileInfo file in fileList)
+            {
+                int lineLength = 80;
+                string commentLine = new String('/', lineLength) + Environment.NewLine;
+                string fileNamePrefix = "//  Code from: " + file.Name;
+                string fileNameSuffix = new String(' ', lineLength - fileNamePrefix.Length - 2) + "//" + Environment.NewLine;
+
+                stringBuilder.Append(Environment.NewLine + commentLine + fileNamePrefix +
+                    fileNameSuffix + commentLine);
+
+                stringBuilder.Append(file.ClassTextInNamespace);
+            }
+
             stringBuilder.Append("}" + Environment.NewLine);
 
             MergedFileText = stringBuilder.ToString();
