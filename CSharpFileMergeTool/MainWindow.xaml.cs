@@ -42,14 +42,24 @@ namespace CSharpFileMergeTool
 
             foreach (string fileName in fileNames)
             {
-                fileList.Add(new FileInfo(fileName));
+                FileInfo fileInfo = new FileInfo(fileName);
+                
+                AddFileInfoIfNotFoundInList(fileInfo);
             }
 
             e.Handled = true;
         }
+
+        private void AddFileInfoIfNotFoundInList(FileInfo fileInfo)
+        {
+            if (!fileList.Any(file => file.FullPathName.Equals(fileInfo.FullPathName)))
+            {
+                fileList.Add(fileInfo);
+            }
+        }
     }
 
-    public class FileInfo
+    public class FileInfo : IComparable
     {
         string path;
         public string Path
@@ -61,6 +71,11 @@ namespace CSharpFileMergeTool
         public string Name
         {
             get { return name; }
+        }
+
+        public string FullPathName
+        {
+            get { return path + name; }
         }
 
         public FileInfo(string pathName)
@@ -79,6 +94,26 @@ namespace CSharpFileMergeTool
 
             path = sb.ToString();
             name = pathComponents[pathComponents.Length - 1];
+        }
+
+        public int CompareTo(object obj)
+        {
+            if (obj == null) return 1;
+
+            FileInfo otherFileInfo = obj as FileInfo;
+            if (otherFileInfo != null)
+            {
+                if (name.Equals(otherFileInfo.Name))
+                {
+                    return FullPathName.CompareTo(otherFileInfo.FullPathName);
+                }
+                else
+                {
+                    return name.CompareTo(otherFileInfo.Name);
+                }
+            }
+            else
+                throw new ArgumentException("Object is not a FileInfo");
         }
     }
 }
