@@ -115,18 +115,30 @@ namespace CSharpFileMergeTool
         {
             if (obj == null) return 1;
 
-
-
             FileInfo otherFileInfo = obj as FileInfo;
+
             if (otherFileInfo != null)
             {
-                if (name.Equals(otherFileInfo.Name))
+                if (this.hasMainMethod && !otherFileInfo.hasMainMethod)
                 {
-                    return FullPathName.CompareTo(otherFileInfo.FullPathName);
+                    return -1;
+                }
+                else if (!this.hasMainMethod && otherFileInfo.hasMainMethod)
+                {
+                    return 1;
                 }
                 else
                 {
-                    return name.CompareTo(otherFileInfo.Name);
+
+                    if (name.Equals(otherFileInfo.Name))
+                    {
+                        return FullPathName.CompareTo(otherFileInfo.FullPathName);
+                    }
+                    else
+                    {
+                        return name.CompareTo(otherFileInfo.Name);
+                    }
+
                 }
             }
             else

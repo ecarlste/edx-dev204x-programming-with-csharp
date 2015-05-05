@@ -38,6 +38,11 @@ namespace CSharpFileMergeTool
         public ObservableCollection<FileInfo> FileList
         {
             get { return fileList; }
+            set
+            {
+                fileList = value;
+                OnPropertyChanged("FileList");
+            }
         }
 
         public MainWindow()
@@ -56,6 +61,11 @@ namespace CSharpFileMergeTool
                 
                 AddFileInfoIfNotFoundInList(fileInfo);
             }
+
+            List<FileInfo> updatedFileList = new List<FileInfo>(fileList);
+            updatedFileList.Sort();
+
+            FileList = new ObservableCollection<FileInfo>(updatedFileList);
 
             RebuildMergedFileText();
 
