@@ -22,6 +22,13 @@ namespace CSharpFileMergeTool
     /// </summary>
     public partial class MainWindow : Window
     {
+        ObservableCollection<string> imports = new ObservableCollection<string>();
+        public ObservableCollection<string> Imports
+        {
+            get { return imports; }
+            set { imports = value; }
+        }
+
         ObservableCollection<FileInfo> fileList = new ObservableCollection<FileInfo>();
         public ObservableCollection<FileInfo> FileList
         {
@@ -54,7 +61,16 @@ namespace CSharpFileMergeTool
             if (!fileList.Any(file => file.FullPathName.Equals(fileInfo.FullPathName)))
             {
                 fileList.Add(fileInfo);
+                AddImportsFromFileInfo(fileInfo);
             }
+        }
+
+        private void AddImportsFromFileInfo(FileInfo fileInfo)
+        {
+            List<string> updatedImports = new List<string>(fileInfo.Imports.Union(imports));
+            updatedImports.Sort();
+
+            imports = new ObservableCollection<string>(updatedImports);
         }
     }
 }

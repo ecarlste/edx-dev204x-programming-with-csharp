@@ -99,7 +99,9 @@ namespace CSharpFileMergeTool
                 }
             }
             else
+            {
                 throw new ArgumentException("Object is not a FileInfo");
+            }
         }
     }
 }
