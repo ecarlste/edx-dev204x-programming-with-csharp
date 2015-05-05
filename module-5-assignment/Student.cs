@@ -1,77 +1,15 @@
-﻿using System;
+﻿
+using System;
 using System.Threading;
 
-namespace ModuleFiveAssignment
+namespace ModuleFiveSixAssignment
 {
-    class Student
+    class Student : Person
     {
         static int numberOfStudentsEnrolled = 0;
         public static int NumberOfStudentsEnrolled
         {
             get { return Student.numberOfStudentsEnrolled; }
-        }
-
-        string firstName;
-        public string FirstName
-        {
-            get { return firstName; }
-            set { firstName = value; }
-        }
-        
-        string lastName;
-        public string LastName
-        {
-            get { return lastName; }
-            set { lastName = value; }
-        }
-
-        DateTime birthdate;
-        public DateTime Birthdate
-        {
-            get { return birthdate; }
-            set { birthdate = value; }
-        }
-
-        string addressLine1;
-        public string AddressLine1
-        {
-            get { return addressLine1; }
-            set { addressLine1 = value; }
-        }
-
-        string addressLine2;
-        public string AddressLine2
-        {
-            get { return addressLine2; }
-            set { addressLine2 = value; }
-        }
-
-        string city;
-        public string City
-        {
-            get { return city; }
-            set { city = value; }
-        }
-
-        string stateOrProvince;
-        public string StateOrProvince
-        {
-            get { return stateOrProvince; }
-            set { stateOrProvince = value; }
-        }
-
-        string zipOrPostalCode;
-        public string ZipOrPostalCode
-        {
-            get { return zipOrPostalCode; }
-            set { zipOrPostalCode = value; }
-        }
-
-        string country;
-        public string Country
-        {
-            get { return country; }
-            set { country = value; }
         }
 
         Decimal accountBalance;
@@ -88,13 +26,6 @@ namespace ModuleFiveAssignment
             set { overallGPA = value; }
         }
 
-        char gender;
-        public char Gender
-        {
-            get { return gender; }
-            set { gender = value; }
-        }
-
         bool isEnrolled;
         public bool IsEnrolled
         {
@@ -105,7 +36,7 @@ namespace ModuleFiveAssignment
         public Student(string firstName, string lastName, DateTime birthdate,
             string addressLine1, string addressLine2, string city,
             string stateOrProvince, string zipOrPostalCode, string country,
-            Decimal accountBalance, float overallGPA, char gender,
+            Decimal accountBalance, float overallGPA, Gender gender,
             bool isEnrolled)
         {
             this.firstName = firstName;
@@ -122,14 +53,14 @@ namespace ModuleFiveAssignment
 
             this.accountBalance = accountBalance;
             this.overallGPA = overallGPA;
-            this.gender = gender;
+            this.Gender = gender;
             this.isEnrolled = isEnrolled;
 
             Interlocked.Increment(ref numberOfStudentsEnrolled);
         }
 
         public Student() : this("", "", new DateTime(), "", "", "", "", "", "",
-            0m, 0f, '\0', false)
+            0m, 0f, Gender.NotSpecified, false)
         {}
 
         ~Student()
@@ -143,6 +74,11 @@ namespace ModuleFiveAssignment
              * references to our Students created list. */
 
             Interlocked.Decrement(ref numberOfStudentsEnrolled);
+        }
+
+        public void TakeTest()
+        {
+            Console.WriteLine("{0} {1} just took a test!", firstName, lastName);
         }
     }
 }
