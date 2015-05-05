@@ -39,6 +39,12 @@ namespace CSharpFileMergeTool
             get { return _namespace; }
         }
 
+        string classTextInNamespace;
+        public string ClassTextInNamespace
+        {
+            get { return classTextInNamespace; }
+        }
+
         public FileInfo(string fullPathName)
         {
             string[] pathComponents = fullPathName.Split('\\');
@@ -61,6 +67,15 @@ namespace CSharpFileMergeTool
 
             ParseImports(textFromFile);
             ParseNamespace(textFromFile);
+            ParseAllClassesInNamespace(textFromFile);
+        }
+
+        private void ParseAllClassesInNamespace(string textFromFile)
+        {
+            string pattern = @"namespace\s+\w+\s+\{(?<allClasses>[\w\W]+)\}";
+            Match match = Regex.Match(textFromFile, pattern);
+
+            classTextInNamespace = match.Groups["allClasses"].Value;
         }
 
         private void ParseNamespace(string textFromFile)
