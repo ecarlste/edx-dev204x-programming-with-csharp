@@ -79,9 +79,12 @@ namespace CSharpFileMergeTool
             foreach (FileInfo file in fileList)
             {
                 int lineLength = 80;
+                
                 string commentLine = new String('/', lineLength) + Environment.NewLine;
                 string fileNamePrefix = "//  Code from: " + file.Name;
-                string fileNameSuffix = new String(' ', lineLength - fileNamePrefix.Length - 2) + "//" + Environment.NewLine;
+
+                string fileNameSuffix = new String(' ', lineLength - fileNamePrefix.Length - 2) +
+                    "//" + Environment.NewLine;
 
                 stringBuilder.Append(Environment.NewLine + commentLine + fileNamePrefix +
                     fileNameSuffix + commentLine);

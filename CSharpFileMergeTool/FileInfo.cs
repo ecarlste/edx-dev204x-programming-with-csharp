@@ -43,6 +43,12 @@ namespace CSharpFileMergeTool
             get { return classTextInNamespace; }
         }
 
+        bool hasMainMethod;
+        public bool HasMainMethod
+        {
+            get { return hasMainMethod; }
+        }
+
         public FileInfo(string fullPathName)
         {
             string[] pathComponents = fullPathName.Split('\\');
@@ -66,6 +72,16 @@ namespace CSharpFileMergeTool
             ParseImports(textFromFile);
             ParseNamespace(textFromFile);
             ParseAllClassesInNamespace(textFromFile);
+
+            FindMainMethodAndSetProperty(textFromFile);
+        }
+
+        private void FindMainMethodAndSetProperty(string textFromFile)
+        {
+            string pattern = @"Main\(string\s*\[\s*\]\s+\w+\)\s*\{";
+            Match match = Regex.Match(textFromFile, pattern);
+
+            hasMainMethod = match.Equals(Match.Empty) ? false : true;
         }
 
         private void ParseAllClassesInNamespace(string textFromFile)
@@ -98,6 +114,8 @@ namespace CSharpFileMergeTool
         public int CompareTo(object obj)
         {
             if (obj == null) return 1;
+
+
 
             FileInfo otherFileInfo = obj as FileInfo;
             if (otherFileInfo != null)
