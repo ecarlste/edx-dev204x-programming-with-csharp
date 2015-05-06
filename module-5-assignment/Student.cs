@@ -7,8 +7,11 @@ namespace ModuleFiveSixAssignment
 {
     class Student : Person
     {
-        Stack<float> grades;
-        public Stack<float> Grades
+        ////////////////////////
+        // Grading Criteria 2 //
+        ////////////////////////
+        Stack<decimal> grades;
+        public Stack<decimal> Grades
         {
             get { return grades; }
             set { grades = value; }
@@ -43,7 +46,7 @@ namespace ModuleFiveSixAssignment
 
         public Student(string firstName, string lastName) : base(firstName, lastName)
         {
-            grades = new Stack<float>();
+            grades = new Stack<decimal>();
             Interlocked.Increment(ref numberOfStudentsEnrolled);
         }
 
