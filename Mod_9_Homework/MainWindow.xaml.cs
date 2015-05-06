@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,9 +19,34 @@ namespace Mod_9_Homework
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
         List<Student> students = new List<Student>();
+        int currentStudentIndex = 0;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        bool btnPreviousIsEnabled = false;
+        public bool BtnPreviousIsEnabled
+        {
+            get { return btnPreviousIsEnabled; }
+            set
+            {
+                btnPreviousIsEnabled = value;
+                OnPropertyChanged("BtnPreviousIsEnabled");
+            }
+        }
+
+        bool btnNextIsEnabled = false;
+        public bool BtnNextIsEnabled
+        {
+            get { return btnNextIsEnabled; }
+            set
+            {
+                btnNextIsEnabled = value;
+                OnPropertyChanged("BtnNextIsEnabled");
+            }
+        }
 
         public MainWindow()
         {
@@ -31,6 +57,13 @@ namespace Mod_9_Homework
         {
             CreateStudentFromTextBoxes();
             ClearAllTextBoxes();
+            SetBtnPreviousAndNextEnabled(true);
+        }
+
+        private void SetBtnPreviousAndNextEnabled(bool isEnabled)
+        {
+            BtnPreviousIsEnabled = isEnabled;
+            BtnNextIsEnabled = isEnabled;
         }
 
         private void CreateStudentFromTextBoxes()
@@ -47,6 +80,24 @@ namespace Mod_9_Homework
             txtFirstName.Clear();
             txtLastName.Clear();
             txtCity.Clear();
+        }
+
+        private void btnPrevious_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void btnNext_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        protected void OnPropertyChanged(string name)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
         }
     }
 }
