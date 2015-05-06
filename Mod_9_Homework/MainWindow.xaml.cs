@@ -20,9 +20,33 @@ namespace Mod_9_Homework
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<Student> students = new List<Student>();
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void btnCreateStudent_Click(object sender, RoutedEventArgs e)
+        {
+            CreateStudentFromTextBoxes();
+            ClearAllTextBoxes();
+        }
+
+        private void CreateStudentFromTextBoxes()
+        {
+            Student student = new Student();
+            student.FirstName = txtFirstName.Text;
+            student.LastName = txtLastName.Text;
+            student.City = txtCity.Text;
+            students.Add(student);
+        }
+
+        private void ClearAllTextBoxes()
+        {
+            txtFirstName.Clear();
+            txtLastName.Clear();
+            txtCity.Clear();
         }
     }
 }
