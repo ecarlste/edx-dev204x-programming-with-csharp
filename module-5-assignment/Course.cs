@@ -1,4 +1,6 @@
 ﻿
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ModuleFiveSixAssignment
@@ -26,8 +28,8 @@ namespace ModuleFiveSixAssignment
             set { creditHours = value; }
         }
         
-        Student[] studentsEnrolled;
-        public Student[] StudentsEnrolled
+        ArrayList studentsEnrolled;
+        public ArrayList StudentsEnrolled
         {
             get { return studentsEnrolled; }
         }
@@ -47,13 +49,18 @@ namespace ModuleFiveSixAssignment
             this.referenceNumber = referenceNumber;
             this.creditHours = creditHours;
 
-            studentsEnrolled = new Student[3];
+            studentsEnrolled = new ArrayList();
             teachersAndAssistants = new Teacher[3];
         }
 
         public Course(string name) : this(name, "", 0)
         {}
 
+        public void AddStudent(Student student)
+        {
+            studentsEnrolled.Add(student);
+        }
+        
         public void AddStudent(Student[] studentsToAdd)
         {
             foreach (Student student in studentsToAdd)
@@ -62,10 +69,9 @@ namespace ModuleFiveSixAssignment
             }
         }
 
-        public void AddStudent(Student student)
+        public void AddStudent(List<Student> studentsToAdd)
         {
-            int studentCount = studentsEnrolled.Count(s => s != null);
-            studentsEnrolled[studentCount] = student;
+            AddStudent(studentsToAdd.ToArray());
         }
 
         public void AddTeacher(Teacher teacher)

@@ -1,30 +1,110 @@
 ﻿
 using System;
+using System.Collections.Generic;
 
 namespace ModuleFiveSixAssignment
 {
     class Program
     {
+        private static readonly string[] studentNames = 
+        {
+            "Erik Carlsten",
+            "Jordan Tate",
+            "Phillip Morrison"
+        };
+        private const int newStudentCount = 3;
+        private const int studentGradeCount = 5;
+
         static void Main(string[] args)
         {
-            Course programmingWithCSharp = new Course("Programming with C#");
-            programmingWithCSharp.AddStudent(
-                new Student[]
-                {
-                    new Student(),
-                    new Student(),
-                    new Student()
-                });
-            programmingWithCSharp.AddTeacher(new Teacher());
+            // I use a list here but I am using an ArrayList where the assignment requires it
+            List<Student> students = CreateListOfStudentsWithGrades();
 
-            Degree bachelorOfScience = new Degree("Bachelor of Science");
-            bachelorOfScience.AddCourse(programmingWithCSharp);
+            Course course = CreateCourseAddStudentsAndTeacher("Programming with C#", students);
+            Degree degree = CreateDegreeWithCourse("Bachelor of Science", course);
+            UProgram program = CreateUProgramWithDegree("Information Technology", degree);
 
-            UProgram informationTechnologyProgram = new UProgram(
-                "Information Technology");
-            informationTechnologyProgram.AddDegree(bachelorOfScience);
+            PrintProgramInfo(program);
+            PrintCourseStudentArrayListWithGrades(course);
+        }
 
-            PrintProgramInfo(informationTechnologyProgram);
+        private static List<Student> CreateListOfStudentsWithGrades()
+        {
+            List<Student> newStudents = new List<Student>();
+
+            for (int i = 0; i < newStudentCount; i++)
+            {
+                string[] firstAndLastName = studentNames[i].Split(' ');
+
+                Student student = new Student(firstAndLastName[0], firstAndLastName[1]);
+                AddRandomGradesToStudent(student);
+                newStudents.Add(student);
+            }
+
+            return newStudents;
+        }
+
+        private static void PrintCourseStudentArrayListWithGrades(Course course)
+        {
+            PrintTextSeparator("Students in ArrayList");
+
+            foreach (object studentAsObject in course.StudentsEnrolled)
+            {
+                Student student = studentAsObject as Student;
+
+                string studentFullName = student.FirstName + " " + student.LastName;
+                int fullNameFieldWidth = (Console.WindowWidth / 2) + studentFullName.Length / 2;
+
+                Console.WriteLine("{0, " + fullNameFieldWidth + "}", studentFullName);
+            }
+        }
+
+        private static void PrintTextSeparator(string label)
+        {
+            string separatorLine = new String('-', Console.WindowWidth);
+            string separatorBorder = "--";
+
+            int labelFieldWidth = (Console.WindowWidth + label.Length) / 2 - separatorBorder.Length;
+            int rightBorderFieldWidth = Console.WindowWidth - separatorBorder.Length - labelFieldWidth;
+            
+            Console.Write(Environment.NewLine + separatorLine);
+            Console.Write("{1}{0," + labelFieldWidth + "}{1," + rightBorderFieldWidth + "}",
+                label, separatorBorder);
+            Console.WriteLine(separatorLine);
+        }
+
+        private static Course CreateCourseAddStudentsAndTeacher(string courseName, List<Student> studentsToAdd)
+        {
+            Course course = new Course(courseName);
+
+            course.AddStudent(studentsToAdd);
+            course.AddTeacher(new Teacher("John", "Paxton"));
+
+            return course;
+        }
+
+        private static Degree CreateDegreeWithCourse(string degreeName, Course course)
+        {
+            Degree degree = new Degree(degreeName);
+            degree.AddCourse(course);
+            return degree;
+        }
+
+        private static UProgram CreateUProgramWithDegree(string programName, Degree degree)
+        {
+            UProgram program = new UProgram(programName);
+            program.AddDegree(degree);
+            return program;
+        }
+
+        private static void AddRandomGradesToStudent(Student student)
+        {
+            Random random = new Random();
+
+            for (int i = 0; i < studentGradeCount; i++)
+            {
+                student.Grades.Push((float)random.NextDouble() * 100);
+            }
         }
 
         private static void PrintProgramInfo(UProgram program)
