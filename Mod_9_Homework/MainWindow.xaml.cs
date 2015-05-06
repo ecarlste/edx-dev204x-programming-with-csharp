@@ -22,7 +22,8 @@ namespace Mod_9_Homework
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
         List<Student> students = new List<Student>();
-        int currentStudentIndex = 0;
+        int studentIndex = 0;
+        bool currentlyDisplayingStudent = false;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -96,12 +97,38 @@ namespace Mod_9_Homework
 
         private void btnPrevious_Click(object sender, RoutedEventArgs e)
         {
-            
+            if (currentlyDisplayingStudent) setStudentIndexAsPrevious();
+
+            DisplayCurrentStudent();
+        }
+
+        private void setStudentIndexAsPrevious()
+        {
+            studentIndex = (studentIndex == 0) ? students.Count - 1 : studentIndex - 1;
         }
 
         private void btnNext_Click(object sender, RoutedEventArgs e)
         {
+            if (currentlyDisplayingStudent) setStudentIndexAsNext();
 
+            DisplayCurrentStudent();
+        }
+
+        private void setStudentIndexAsNext()
+        {
+            studentIndex = (studentIndex == students.Count - 1) ? 0 : studentIndex + 1;
+        }
+
+        private void DisplayCurrentStudent()
+        {
+            Student student = students[studentIndex];
+
+            txtFirstName.Text = student.FirstName;
+            txtLastName.Text = student.LastName;
+            txtCity.Text = student.City;
+
+            currentlyDisplayingStudent = true;
+            BtnCreateStudentIsEnabled = false;
         }
 
         protected void OnPropertyChanged(string name)
@@ -118,6 +145,8 @@ namespace Mod_9_Homework
                 BtnCreateStudentIsEnabled = false;
             else
                 BtnCreateStudentIsEnabled = true;
+
+            currentlyDisplayingStudent = false;
         }
     }
 }
