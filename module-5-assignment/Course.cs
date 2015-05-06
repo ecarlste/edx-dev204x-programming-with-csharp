@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,10 @@ namespace ModuleFiveSixAssignment
             get { return creditHours; }
             set { creditHours = value; }
         }
-        
+
+        ////////////////////////
+        // Grading Criteria 1 //
+        ////////////////////////
         List<Student> studentsEnrolled;
         public List<Student> StudentsEnrolled
         {
@@ -58,6 +62,9 @@ namespace ModuleFiveSixAssignment
 
         public void AddStudent(Student student)
         {
+            ////////////////////////
+            // Grading Criteria 3 //
+            ////////////////////////
             studentsEnrolled.Add(student);
         }
         
@@ -78,6 +85,17 @@ namespace ModuleFiveSixAssignment
         {
             int teacherCount = teachersAndAssistants.Count(s => s != null);
             teachersAndAssistants[teacherCount] = teacher;
+        }
+
+        public void ListStudents()
+        {
+            ////////////////////////
+            // Grading Criteria 4 //
+            ////////////////////////
+            foreach (Student student in studentsEnrolled)
+            {
+                Console.WriteLine(student.LastName + ", " + student.FirstName);
+            }
         }
     }
 }

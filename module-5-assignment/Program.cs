@@ -24,7 +24,12 @@ namespace ModuleFiveSixAssignment
             UProgram program = CreateUProgramWithDegree("Information Technology", degree);
 
             PrintProgramInfo(program);
-            PrintCourseStudentArrayListWithGrades(course);
+            Console.WriteLine();
+
+            ////////////////////////
+            // Grading Criteria 1 //
+            ////////////////////////
+            course.ListStudents();
         }
 
         private static List<Student> CreateListOfStudentsWithGrades()
@@ -37,37 +42,14 @@ namespace ModuleFiveSixAssignment
 
                 Student student = new Student(firstAndLastName[0], firstAndLastName[1]);
                 AddRandomGradesToStudent(student);
+                
+                ////////////////////////
+                // Grading Criteria 3 //
+                ////////////////////////
                 newStudents.Add(student);
             }
 
             return newStudents;
-        }
-
-        private static void PrintCourseStudentArrayListWithGrades(Course course)
-        {
-            PrintTextSeparator("Students in ArrayList");
-
-            foreach (Student student in course.StudentsEnrolled)
-            {
-                string studentFullName = student.FirstName + " " + student.LastName;
-                int fullNameFieldWidth = (Console.WindowWidth / 2) + studentFullName.Length / 2;
-
-                Console.WriteLine("{0, " + fullNameFieldWidth + "}", studentFullName);
-            }
-        }
-
-        private static void PrintTextSeparator(string label)
-        {
-            string separatorLine = new String('-', Console.WindowWidth);
-            string separatorBorder = "--";
-
-            int labelFieldWidth = (Console.WindowWidth + label.Length) / 2 - separatorBorder.Length;
-            int rightBorderFieldWidth = Console.WindowWidth - separatorBorder.Length - labelFieldWidth;
-            
-            Console.Write(Environment.NewLine + separatorLine);
-            Console.Write("{1}{0," + labelFieldWidth + "}{1," + rightBorderFieldWidth + "}",
-                label, separatorBorder);
-            Console.WriteLine(separatorLine);
         }
 
         private static Course CreateCourseAddStudentsAndTeacher(string courseName, List<Student> studentsToAdd)
@@ -100,7 +82,8 @@ namespace ModuleFiveSixAssignment
 
             for (int i = 0; i < studentGradeCount; i++)
             {
-                student.Grades.Push((float)random.NextDouble() * 100);
+                decimal nextGrade = (decimal)random.Next(101);
+                student.Grades.Push(nextGrade);
             }
         }
 
