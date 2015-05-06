@@ -28,8 +28,8 @@ namespace ModuleFiveSixAssignment
             set { creditHours = value; }
         }
         
-        ArrayList studentsEnrolled;
-        public ArrayList StudentsEnrolled
+        List<Student> studentsEnrolled;
+        public List<Student> StudentsEnrolled
         {
             get { return studentsEnrolled; }
         }
@@ -49,7 +49,7 @@ namespace ModuleFiveSixAssignment
             this.referenceNumber = referenceNumber;
             this.creditHours = creditHours;
 
-            studentsEnrolled = new ArrayList();
+            studentsEnrolled = new List<Student>();
             teachersAndAssistants = new Teacher[3];
         }
 

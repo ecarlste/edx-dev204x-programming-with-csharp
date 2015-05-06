@@ -17,7 +17,6 @@ namespace ModuleFiveSixAssignment
 
         static void Main(string[] args)
         {
-            // I use a list here but I am using an ArrayList where the assignment requires it
             List<Student> students = CreateListOfStudentsWithGrades();
 
             Course course = CreateCourseAddStudentsAndTeacher("Programming with C#", students);
@@ -48,10 +47,8 @@ namespace ModuleFiveSixAssignment
         {
             PrintTextSeparator("Students in ArrayList");
 
-            foreach (object studentAsObject in course.StudentsEnrolled)
+            foreach (Student student in course.StudentsEnrolled)
             {
-                Student student = studentAsObject as Student;
-
                 string studentFullName = student.FirstName + " " + student.LastName;
                 int fullNameFieldWidth = (Console.WindowWidth / 2) + studentFullName.Length / 2;
 
