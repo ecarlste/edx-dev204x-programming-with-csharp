@@ -1,5 +1,6 @@
 ﻿
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ModuleFiveSixAssignment
@@ -55,6 +56,11 @@ namespace ModuleFiveSixAssignment
         public Course(string name) : this(name, "", 0)
         {}
 
+        public void AddStudent(Student student)
+        {
+            studentsEnrolled.Add(student);
+        }
+        
         public void AddStudent(Student[] studentsToAdd)
         {
             foreach (Student student in studentsToAdd)
@@ -63,9 +69,9 @@ namespace ModuleFiveSixAssignment
             }
         }
 
-        public void AddStudent(Student student)
+        public void AddStudent(List<Student> studentsToAdd)
         {
-            studentsEnrolled.Add(student);
+            AddStudent(studentsToAdd.ToArray());
         }
 
         public void AddTeacher(Teacher teacher)

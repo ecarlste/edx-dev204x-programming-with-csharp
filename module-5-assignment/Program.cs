@@ -1,21 +1,20 @@
 ﻿
 using System;
+using System.Collections.Generic;
 
 namespace ModuleFiveSixAssignment
 {
     class Program
     {
+        private const int newStudentCount = 3;
+        private const int studentGradeCount = 5;
+
         static void Main(string[] args)
         {
-            Course programmingWithCSharp = new Course("Programming with C#");
-            programmingWithCSharp.AddStudent(
-                new Student[]
-                {
-                    new Student(),
-                    new Student(),
-                    new Student()
-                });
-            programmingWithCSharp.AddTeacher(new Teacher());
+            List<Student> students = CreateListOfStudentsWithGrades();
+
+            Course programmingWithCSharp =
+                CreateCourseAddStudentsAndTeacher("Programming with C#", students);
 
             Degree bachelorOfScience = new Degree("Bachelor of Science");
             bachelorOfScience.AddCourse(programmingWithCSharp);
@@ -25,6 +24,40 @@ namespace ModuleFiveSixAssignment
             informationTechnologyProgram.AddDegree(bachelorOfScience);
 
             PrintProgramInfo(informationTechnologyProgram);
+        }
+
+        private static List<Student> CreateListOfStudentsWithGrades()
+        {
+            List<Student> newStudents = new List<Student>();
+
+            for (int i = 0; i < newStudentCount; i++)
+            {
+                Student student = new Student();
+                AddRandomGradesToStudent(student);
+                newStudents.Add(student);
+            }
+
+                return newStudents;
+        }
+
+        private static Course CreateCourseAddStudentsAndTeacher(string courseName, List<Student> studentsToAdd)
+        {
+            Course course = new Course(courseName);
+
+            course.AddStudent(studentsToAdd);
+            course.AddTeacher(new Teacher());
+
+            return course;
+        }
+
+        private static void AddRandomGradesToStudent(Student student)
+        {
+            Random random = new Random();
+
+            for (int i = 0; i < studentGradeCount; i++)
+            {
+                student.Grades.Push((float)random.NextDouble());
+            }
         }
 
         private static void PrintProgramInfo(UProgram program)
