@@ -26,6 +26,17 @@ namespace Mod_9_Homework
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        bool btnCreateStudentIsEnabled = false;
+        public bool BtnCreateStudentIsEnabled
+        {
+            get { return btnCreateStudentIsEnabled; }
+            set
+            {
+                btnCreateStudentIsEnabled = value;
+                OnPropertyChanged("BtnCreateStudentIsEnabled");
+            }
+        }
+
         bool btnPreviousIsEnabled = false;
         public bool BtnPreviousIsEnabled
         {
@@ -80,6 +91,7 @@ namespace Mod_9_Homework
             txtFirstName.Clear();
             txtLastName.Clear();
             txtCity.Clear();
+            BtnCreateStudentIsEnabled = false;
         }
 
         private void btnPrevious_Click(object sender, RoutedEventArgs e)
@@ -98,6 +110,14 @@ namespace Mod_9_Homework
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(name));
             }
+        }
+
+        private void txtAnyTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (txtCity.Text == "" || txtFirstName.Text == "" || txtLastName.Text == "")
+                BtnCreateStudentIsEnabled = false;
+            else
+                BtnCreateStudentIsEnabled = true;
         }
     }
 }
