@@ -74,6 +74,12 @@ namespace ModuleFiveSixAssignment
             get { return gender; }
             set { gender = value; }
         }
+
+        public Person(string firstName, string lastName)
+        {
+            this.firstName = firstName;
+            this.lastName = lastName;
+        }
     }
 
     enum Gender

@@ -1,30 +1,90 @@
 ﻿
 using System;
+using System.Collections.Generic;
 
 namespace ModuleFiveSixAssignment
 {
     class Program
     {
+        private static readonly string[] studentNames = 
+        {
+            "Erik Carlsten",
+            "Jordan Tate",
+            "Phillip Morrison"
+        };
+        private const int newStudentCount = 3;
+        private const int studentGradeCount = 5;
+
         static void Main(string[] args)
         {
-            Course programmingWithCSharp = new Course("Programming with C#");
-            programmingWithCSharp.AddStudent(
-                new Student[]
-                {
-                    new Student(),
-                    new Student(),
-                    new Student()
-                });
-            programmingWithCSharp.AddTeacher(new Teacher());
+            List<Student> students = CreateListOfStudentsWithGrades();
 
-            Degree bachelorOfScience = new Degree("Bachelor of Science");
-            bachelorOfScience.AddCourse(programmingWithCSharp);
+            Course course = CreateCourseAddStudentsAndTeacher("Programming with C#", students);
+            Degree degree = CreateDegreeWithCourse("Bachelor of Science", course);
+            UProgram program = CreateUProgramWithDegree("Information Technology", degree);
 
-            UProgram informationTechnologyProgram = new UProgram(
-                "Information Technology");
-            informationTechnologyProgram.AddDegree(bachelorOfScience);
+            PrintProgramInfo(program);
+            Console.WriteLine();
 
-            PrintProgramInfo(informationTechnologyProgram);
+            ////////////////////////
+            // Grading Criteria 1 //
+            ////////////////////////
+            course.ListStudents();
+        }
+
+        private static List<Student> CreateListOfStudentsWithGrades()
+        {
+            List<Student> newStudents = new List<Student>();
+
+            for (int i = 0; i < newStudentCount; i++)
+            {
+                string[] firstAndLastName = studentNames[i].Split(' ');
+
+                Student student = new Student(firstAndLastName[0], firstAndLastName[1]);
+                AddRandomGradesToStudent(student);
+                
+                ////////////////////////
+                // Grading Criteria 3 //
+                ////////////////////////
+                newStudents.Add(student);
+            }
+
+            return newStudents;
+        }
+
+        private static Course CreateCourseAddStudentsAndTeacher(string courseName, List<Student> studentsToAdd)
+        {
+            Course course = new Course(courseName);
+
+            course.AddStudent(studentsToAdd);
+            course.AddTeacher(new Teacher("John", "Paxton"));
+
+            return course;
+        }
+
+        private static Degree CreateDegreeWithCourse(string degreeName, Course course)
+        {
+            Degree degree = new Degree(degreeName);
+            degree.AddCourse(course);
+            return degree;
+        }
+
+        private static UProgram CreateUProgramWithDegree(string programName, Degree degree)
+        {
+            UProgram program = new UProgram(programName);
+            program.AddDegree(degree);
+            return program;
+        }
+
+        private static void AddRandomGradesToStudent(Student student)
+        {
+            Random random = new Random();
+
+            for (int i = 0; i < studentGradeCount; i++)
+            {
+                decimal nextGrade = (decimal)random.Next(101);
+                student.Grades.Push(nextGrade);
+            }
         }
 
         private static void PrintProgramInfo(UProgram program)

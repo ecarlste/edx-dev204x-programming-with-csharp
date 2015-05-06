@@ -1,4 +1,7 @@
 ﻿
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ModuleFiveSixAssignment
@@ -25,9 +28,12 @@ namespace ModuleFiveSixAssignment
             get { return creditHours; }
             set { creditHours = value; }
         }
-        
-        Student[] studentsEnrolled;
-        public Student[] StudentsEnrolled
+
+        ////////////////////////
+        // Grading Criteria 1 //
+        ////////////////////////
+        List<Student> studentsEnrolled;
+        public List<Student> StudentsEnrolled
         {
             get { return studentsEnrolled; }
         }
@@ -47,13 +53,21 @@ namespace ModuleFiveSixAssignment
             this.referenceNumber = referenceNumber;
             this.creditHours = creditHours;
 
-            studentsEnrolled = new Student[3];
+            studentsEnrolled = new List<Student>();
             teachersAndAssistants = new Teacher[3];
         }
 
         public Course(string name) : this(name, "", 0)
         {}
 
+        public void AddStudent(Student student)
+        {
+            ////////////////////////
+            // Grading Criteria 3 //
+            ////////////////////////
+            studentsEnrolled.Add(student);
+        }
+        
         public void AddStudent(Student[] studentsToAdd)
         {
             foreach (Student student in studentsToAdd)
@@ -62,16 +76,26 @@ namespace ModuleFiveSixAssignment
             }
         }
 
-        public void AddStudent(Student student)
+        public void AddStudent(List<Student> studentsToAdd)
         {
-            int studentCount = studentsEnrolled.Count(s => s != null);
-            studentsEnrolled[studentCount] = student;
+            AddStudent(studentsToAdd.ToArray());
         }
 
         public void AddTeacher(Teacher teacher)
         {
             int teacherCount = teachersAndAssistants.Count(s => s != null);
             teachersAndAssistants[teacherCount] = teacher;
+        }
+
+        public void ListStudents()
+        {
+            ////////////////////////
+            // Grading Criteria 4 //
+            ////////////////////////
+            foreach (Student student in studentsEnrolled)
+            {
+                Console.WriteLine(student.LastName + ", " + student.FirstName);
+            }
         }
     }
 }
