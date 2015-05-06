@@ -97,7 +97,7 @@ namespace ModuleFiveSixAssignment
 
             for (int i = 0; i < studentGradeCount; i++)
             {
-                student.Grades.Push((float)random.NextDouble());
+                student.Grades.Push((float)random.NextDouble() * 100);
             }
         }
 
