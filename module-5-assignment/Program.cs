@@ -6,12 +6,18 @@ namespace ModuleFiveSixAssignment
 {
     class Program
     {
-        private static readonly string[] studentNames = { "Erik Carlsten", "Jordan Tate", "Phillip Morrison" };
+        private static readonly string[] studentNames = 
+        {
+            "Erik Carlsten",
+            "Jordan Tate",
+            "Phillip Morrison"
+        };
         private const int newStudentCount = 3;
         private const int studentGradeCount = 5;
 
         static void Main(string[] args)
         {
+            // I use a list here but I am using an ArrayList where the assignment requires it
             List<Student> students = CreateListOfStudentsWithGrades();
 
             Course course = CreateCourseAddStudentsAndTeacher("Programming with C#", students);
