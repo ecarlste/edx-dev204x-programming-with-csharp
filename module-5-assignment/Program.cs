@@ -6,6 +6,7 @@ namespace ModuleFiveSixAssignment
 {
     class Program
     {
+        private static readonly string[] studentNames = { "Erik Carlsten", "Jordan Tate", "Phillip Morrison" };
         private const int newStudentCount = 3;
         private const int studentGradeCount = 5;
 
@@ -13,17 +14,12 @@ namespace ModuleFiveSixAssignment
         {
             List<Student> students = CreateListOfStudentsWithGrades();
 
-            Course programmingWithCSharp =
-                CreateCourseAddStudentsAndTeacher("Programming with C#", students);
+            Course course = CreateCourseAddStudentsAndTeacher("Programming with C#", students);
+            Degree degree = CreateDegreeWithCourse("Bachelor of Science", course);
+            UProgram program = CreateUProgramWithDegree("Information Technology", degree);
 
-            Degree bachelorOfScience = new Degree("Bachelor of Science");
-            bachelorOfScience.AddCourse(programmingWithCSharp);
-
-            UProgram informationTechnologyProgram = new UProgram(
-                "Information Technology");
-            informationTechnologyProgram.AddDegree(bachelorOfScience);
-
-            PrintProgramInfo(informationTechnologyProgram);
+            PrintProgramInfo(program);
+            PrintCourseStudentArrayListWithGrades(course);
         }
 
         private static List<Student> CreateListOfStudentsWithGrades()
@@ -32,12 +28,43 @@ namespace ModuleFiveSixAssignment
 
             for (int i = 0; i < newStudentCount; i++)
             {
-                Student student = new Student();
+                string[] firstAndLastName = studentNames[i].Split(' ');
+
+                Student student = new Student(firstAndLastName[0], firstAndLastName[1]);
                 AddRandomGradesToStudent(student);
                 newStudents.Add(student);
             }
 
-                return newStudents;
+            return newStudents;
+        }
+
+        private static void PrintCourseStudentArrayListWithGrades(Course course)
+        {
+            PrintTextSeparator("Students in ArrayList");
+
+            foreach (object studentAsObject in course.StudentsEnrolled)
+            {
+                Student student = studentAsObject as Student;
+
+                string studentFullName = student.FirstName + " " + student.LastName;
+                int fullNameFieldWidth = (Console.WindowWidth / 2) + studentFullName.Length / 2;
+
+                Console.WriteLine("{0, " + fullNameFieldWidth + "}", studentFullName);
+            }
+        }
+
+        private static void PrintTextSeparator(string label)
+        {
+            string separatorLine = new String('-', Console.WindowWidth);
+            string separatorBorder = "--";
+
+            int labelFieldWidth = (Console.WindowWidth + label.Length) / 2 - separatorBorder.Length;
+            int rightBorderFieldWidth = Console.WindowWidth - separatorBorder.Length - labelFieldWidth;
+            
+            Console.Write(Environment.NewLine + separatorLine);
+            Console.Write("{1}{0," + labelFieldWidth + "}{1," + rightBorderFieldWidth + "}",
+                label, separatorBorder);
+            Console.WriteLine(separatorLine);
         }
 
         private static Course CreateCourseAddStudentsAndTeacher(string courseName, List<Student> studentsToAdd)
@@ -45,9 +72,23 @@ namespace ModuleFiveSixAssignment
             Course course = new Course(courseName);
 
             course.AddStudent(studentsToAdd);
-            course.AddTeacher(new Teacher());
+            course.AddTeacher(new Teacher("John", "Paxton"));
 
             return course;
+        }
+
+        private static Degree CreateDegreeWithCourse(string degreeName, Course course)
+        {
+            Degree degree = new Degree(degreeName);
+            degree.AddCourse(course);
+            return degree;
+        }
+
+        private static UProgram CreateUProgramWithDegree(string programName, Degree degree)
+        {
+            UProgram program = new UProgram(programName);
+            program.AddDegree(degree);
+            return program;
         }
 
         private static void AddRandomGradesToStudent(Student student)

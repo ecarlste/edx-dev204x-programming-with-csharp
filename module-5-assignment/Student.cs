@@ -41,37 +41,11 @@ namespace ModuleFiveSixAssignment
             set { isEnrolled = value; }
         }
 
-        public Student(string firstName, string lastName, DateTime birthdate,
-            string addressLine1, string addressLine2, string city,
-            string stateOrProvince, string zipOrPostalCode, string country,
-            Decimal accountBalance, float overallGPA, Gender gender,
-            bool isEnrolled)
+        public Student(string firstName, string lastName) : base(firstName, lastName)
         {
-            this.firstName = firstName;
-            this.lastName = lastName;
-
-            this.birthdate = birthdate;
-
-            this.addressLine1 = addressLine1;
-            this.addressLine2 = addressLine2;
-            this.city = city;
-            this.stateOrProvince = stateOrProvince;
-            this.zipOrPostalCode = zipOrPostalCode;
-            this.country = country;
-
-            this.accountBalance = accountBalance;
-            this.overallGPA = overallGPA;
-            this.Gender = gender;
-            this.isEnrolled = isEnrolled;
-
             grades = new Stack<float>();
-
             Interlocked.Increment(ref numberOfStudentsEnrolled);
         }
-
-        public Student() : this("", "", new DateTime(), "", "", "", "", "", "",
-            0m, 0f, Gender.NotSpecified, false)
-        {}
 
         ~Student()
         {
