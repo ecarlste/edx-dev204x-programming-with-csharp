@@ -1,11 +1,19 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using System.Threading;
 
 namespace ModuleFiveSixAssignment
 {
     class Student : Person
     {
+        Stack<float> grades;
+        public Stack<float> Grades
+        {
+            get { return grades; }
+            set { grades = value; }
+        }
+
         static int numberOfStudentsEnrolled = 0;
         public static int NumberOfStudentsEnrolled
         {
@@ -55,6 +63,8 @@ namespace ModuleFiveSixAssignment
             this.overallGPA = overallGPA;
             this.Gender = gender;
             this.isEnrolled = isEnrolled;
+
+            grades = new Stack<float>();
 
             Interlocked.Increment(ref numberOfStudentsEnrolled);
         }
