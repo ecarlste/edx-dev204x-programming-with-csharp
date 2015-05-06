@@ -1,18 +1,8 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Mod_9_Homework
 {
@@ -65,6 +55,9 @@ namespace Mod_9_Homework
             InitializeComponent();
         }
 
+        ////////////////////////
+        // Grading Criteria 1 //
+        ////////////////////////
         private void btnCreateStudent_Click(object sender, RoutedEventArgs e)
         {
             CreateStudentFromTextBoxes();
@@ -80,18 +73,29 @@ namespace Mod_9_Homework
 
         private void CreateStudentFromTextBoxes()
         {
+            ////////////////////////
+            // Grading Criteria 2 //
+            ////////////////////////
             Student student = new Student();
             student.FirstName = txtFirstName.Text;
             student.LastName = txtLastName.Text;
             student.City = txtCity.Text;
+
+            ////////////////////////
+            // Grading Criteria 4 //
+            ////////////////////////
             students.Add(student);
         }
 
         private void ClearAllTextBoxes()
         {
+            ////////////////////////
+            // Grading Criteria 3 //
+            ////////////////////////
             txtFirstName.Clear();
             txtLastName.Clear();
             txtCity.Clear();
+            
             BtnCreateStudentIsEnabled = false;
         }
 
@@ -99,6 +103,9 @@ namespace Mod_9_Homework
         {
             if (currentlyDisplayingStudent) setStudentIndexAsPrevious();
 
+            ////////////////////////
+            // Grading Criteria 6 //
+            ////////////////////////
             DisplayCurrentStudent();
         }
 
@@ -111,6 +118,9 @@ namespace Mod_9_Homework
         {
             if (currentlyDisplayingStudent) setStudentIndexAsNext();
 
+            ////////////////////////
+            // Grading Criteria 5 //
+            ////////////////////////
             DisplayCurrentStudent();
         }
 
