@@ -21,7 +21,7 @@ namespace RestrictionOperators
 
             //samples.Linq2(); // This sample uses the where clause to find all products that are out of stock
 
-            //samples.Linq3(); // This sample uses the where clause to find all products that are in  stock and cost 
+            samples.Linq3(); // This sample uses the where clause to find all products that are in  stock and cost 
                                // more than 3.00 per unit
 
             //samples.Linq4(); // This sample uses the where  clause to find all customers in Washington and then it 
@@ -109,12 +109,16 @@ namespace RestrictionOperators
 
                 //TODO: Create code to implement the functionality listed in the [Description] tag for this query
 
+                var expensiveInStockProducts =
+                    from prod in products
+                    where prod.UnitsInStock > 0 && prod.UnitPrice > 3m
+                    select prod;
+
                 Console.WriteLine("In-stock products that cost more than 3.00:");
-                /*
                 foreach (var product in expensiveInStockProducts)
                 {
                     Console.WriteLine("{0} is in stock and costs more than 3.00.", product.ProductName);
-                }*/
+                }
             }
 
             [Description("This sample uses the where clause to find all customers in Washington " +
