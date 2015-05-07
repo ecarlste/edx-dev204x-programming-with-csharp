@@ -15,11 +15,11 @@ namespace OrderingOperators
 
             //Comment or uncomment the method calls below to run or not
 
-              samples.Linq28(); // This sample uses orderby to sort a list of words alphabetically
+            //samples.Linq28(); // This sample uses orderby to sort a list of words alphabetically
 
             //samples.Linq29(); // This sample uses orderby to sort a list of words by length
 
-            //samples.Linq30(); // This sample uses orderby to sort a list of products by name. Use the \"descending\" 
+            samples.Linq30(); // This sample uses orderby to sort a list of products by name. Use the \"descending\" 
                                 // keyword at the end of the clause to perform a reverse ordering
 
             //samples.Linq31(); // This sample uses an  OrderBy clause with a custom comparer to do a case-insensitive 
@@ -112,7 +112,12 @@ namespace OrderingOperators
                 //TODO: Enter code here to order products by name
                 // You don't need to write code to output these values as this next line of code does it for you
 
-                //TODO: ObjectDumper.Write(sortedProducts);
+                var sortedProducts =
+                    from prod in products
+                    orderby prod.ProductName descending
+                    select prod;
+
+                ObjectDumper.Write(sortedProducts);
             }
 
             // Custom comparer for use with ordering operators
