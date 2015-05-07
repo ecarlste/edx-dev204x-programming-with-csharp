@@ -21,10 +21,10 @@ namespace RestrictionOperators
 
             //samples.Linq2(); // This sample uses the where clause to find all products that are out of stock
 
-            samples.Linq3(); // This sample uses the where clause to find all products that are in  stock and cost 
+            //samples.Linq3(); // This sample uses the where clause to find all products that are in  stock and cost 
                                // more than 3.00 per unit
 
-            //samples.Linq4(); // This sample uses the where  clause to find all customers in Washington and then it 
+            samples.Linq4(); // This sample uses the where  clause to find all customers in Washington and then it 
                                // uses a foreach loop to iterate over the orders collection that belongs to each 
                                // customer
 
@@ -129,15 +129,20 @@ namespace RestrictionOperators
 
                 //TODO: Create code to implement the functionality listed in the [Description] tag for this query
 
+                var waCustomers =
+                    from customer in customers
+                    where customer.Country == "USA" && customer.Region == "WA"
+                    select customer;
+                
                 Console.WriteLine("Customers from Washington and their orders:");
-                /*foreach (var customer in waCustomers)
+                foreach (var customer in waCustomers)
                 {
                     Console.WriteLine("Customer {0}: {1}", customer.CustomerID, customer.CompanyName);
                     foreach (var order in customer.Orders)
                     {
                         Console.WriteLine("  Order {0}: {1}", order.OrderID, order.OrderDate);
                     }
-                }*/
+                }
             }
 
             [Description("This sample demonstrates an indexed where clause that returns digits whose name is " +
