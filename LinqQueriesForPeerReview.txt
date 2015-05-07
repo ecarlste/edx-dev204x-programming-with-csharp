@@ -1,0 +1,41 @@
+[Category("Restriction Operators")]
+[Description("This sample uses the where clause to find all products that are in stock and " +
+             "cost more than 3.00 per unit.")]
+
+var expensiveInStockProducts =
+    from prod in products
+    where prod.UnitsInStock > 0 && prod.UnitPrice > 3m
+    select prod;
+
+
+[Description("This sample uses the where clause to find all customers in Washington " +
+             "and then it uses a foreach loop to iterate over the orders collection " +
+			 "that belongs to each customer.")]
+
+var waCustomers =
+    from customer in customers
+	where customer.Country == "USA" && customer.Region == "WA"
+    select customer;
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+[Category("Ordering Operators")]
+[Description("This sample uses orderby to sort a list of products by name. " +
+             "Use the \"descending\" keyword at the end of the clause to perform " +
+			 "a reverse ordering.")]
+
+var sortedProducts =
+    from prod in products
+    orderby prod.ProductName descending
+    select prod;
+
+
+[Description("This sample uses orderby and descending to sort a list of " +
+             "doubles from highest to lowest.")]
+
+var sortedDoubles =
+    from dbl in doubles
+    orderby dbl descending
+    select dbl;
